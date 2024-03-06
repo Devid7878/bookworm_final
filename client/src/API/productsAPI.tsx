@@ -43,8 +43,10 @@ export default function ProductsAPI() {
   useEffect(() => {
     const getProducts = async () => {
       let link = `http://localhost:5000/api/products?limit=${
-        page * 9
+        page * 3
       }&${category}&${sort}&title[regex]=${search}`;
+
+      console.log(link);
       const response = await axios.get(link);
       setProducts(response.data.products);
       setResult(response.data.result);

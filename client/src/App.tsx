@@ -20,7 +20,8 @@ function App() {
   const state = useContext(GlobalState);
   // const isLogged = state?.userAPI.isLogged;
   const isLogged = localStorage.getItem('Login');
-  const isAdmin = state?.userAPI.isAdmin;
+  const isAdmin = true;
+  // const isAdmin = state?.userAPI.isAdmin;
 
   return (
     <div className="App">

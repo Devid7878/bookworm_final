@@ -3,7 +3,6 @@ import { GlobalState } from './../../globalState/GlobalState';
 import ProductItem from './ProductItem';
 import { Button } from '@mui/material';
 import Loading from './../Support/Loading';
-// import Categories from "../filter/Category"
 import './Products.css';
 
 export default function Products() {
@@ -17,8 +16,16 @@ export default function Products() {
     <div className="main">
       <div className="container">
         <h2 className="page__header">Products</h2>
-        <div>{/* <Categories /> */}</div>
+
         <div className="container__item">
+          <div>
+            <select>
+              <option>Sort By</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest</option>
+            </select>
+          </div>
           {products && products.length > 0 ? (
             <div className="product__home--container">
               {products.map((product) => {
@@ -30,8 +37,6 @@ export default function Products() {
           )}
           <div className="button__seemore">
             {result && result > 0 ? (
-              ''
-            ) : (
               <Button
                 variant="contained"
                 color="success"
@@ -41,6 +46,8 @@ export default function Products() {
               >
                 See more
               </Button>
+            ) : (
+              ''
             )}
           </div>
         </div>
