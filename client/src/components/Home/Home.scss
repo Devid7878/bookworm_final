@@ -31,8 +31,53 @@ $white: white;
   justify-content: space-between;
   align-items: center;
   max-width: 80%;
-  div {
+  margin: 2rem auto;
+
+  a {
+    text-decoration: none;
+  }
+  .categories-book {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 0 1.5rem;
     height: 10rem;
-    background: $dark1;
+    // background: $dark1;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border-radius: 5px;
+
+    img {
+      height: 80%;
+    }
+
+    .categories-book-text {
+      display: flex;
+      flex-direction: column;
+      max-width: 120px;
+      overflow: hidden;
+      gap: 10px;
+    }
+    .categories-book-text h1 {
+      font-size: 1rem;
+      color: $dark1;
+      font-weight: bold;
+    }
+
+    .categories-book-text h5 {
+      font-size: 0.8rem;
+      color: $accent;
+    }
   }
 }
+
+// .categories {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   gap: 1rem;
+//   justify-content: space-between;
+//   align-items: center;
+//   max-width: 80%;
+//   margin: 0 auto;
+// }

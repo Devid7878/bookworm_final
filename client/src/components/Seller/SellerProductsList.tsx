@@ -152,7 +152,6 @@ export default function SellerProductsList() {
           }
         );
       } else {
-        console.log({ ...product, images });
         await axios.post(
           `http://localhost:5000/api/products`,
           {
@@ -168,7 +167,7 @@ export default function SellerProductsList() {
         );
       }
       setCallback && setCallback(!callback);
-      navigate('/admin');
+      navigate('/seller');
     } catch (err: any) {
       Swal.fire('Error', err.response.msg, 'error');
     }
