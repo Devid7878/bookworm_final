@@ -12,6 +12,7 @@ import Swal, { SweetAlertOptions } from 'sweetalert2';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlobalState } from '../../globalState/GlobalState';
+import { Checkbox } from '@mui/material';
 
 const theme = createTheme();
 
@@ -20,7 +21,11 @@ export default function Register() {
     name: '',
     email: '',
     password: '',
+    role: 0,
   });
+  const [isChecked, setIsChecked] = useState(false);
+
+  console.log(user);
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -105,7 +110,17 @@ export default function Register() {
                 value={user.password}
                 onChange={onChangeInput}
               />
-
+              <Checkbox
+                value={user.role}
+                checked={isChecked}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setIsChecked((isChecked) => !isChecked);
+                  e.target.checked
+                    ? setUser({ ...user, role: 1 })
+                    : setUser({ ...user, role: 0 });
+                }}
+              />{' '}
+              Want to become a Seller?
               <Button
                 type="submit"
                 fullWidth

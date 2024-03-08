@@ -14,15 +14,17 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import Cart from './components/Cart/Cart';
 import History from './components/Auth/History';
-import Admin from './components/Admin/Admin';
+import Seller from './components/Seller/Seller';
 import axios from 'axios';
+import Admin from './components/Admin/Admin';
+import Home from './components/Home/Home';
 
 function App() {
   const state = useContext(GlobalState);
   const isLogged = state?.userAPI.isLogged;
-  // const isAdmin = true;
-  const isAdmin = state?.userAPI.isAdmin;
-  console.log(isAdmin, isLogged);
+  // const isSeller = true;
+  const isSeller = state?.userAPI.isSeller;
+  console.log(isSeller, isLogged);
 
   return (
     <div className="App">
@@ -40,7 +42,7 @@ function App() {
               element={
                 <>
                   <Header />
-                  <h1>HOME</h1>
+                  <Home />
                 </>
               }
             />
@@ -50,6 +52,8 @@ function App() {
             <Route path="/login" element={!isLogged && <Login />} />
             <Route path="/history" element={<History />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/seller" element={<Seller />} />
+            <Route path="/seller/:id" element={<Seller />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/:id" element={<Admin />} />
 

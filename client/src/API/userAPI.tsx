@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 export type UserAPIType = {
   isLogged: boolean;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  isSeller: boolean;
+  setIsSeller: React.Dispatch<React.SetStateAction<boolean>>;
   isAdmin: boolean;
   setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   callback: boolean;
@@ -24,6 +26,7 @@ type ProductType = {
 
 export default function UserAPI(token: string) {
   const [isLogged, setIsLogged] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState<any>([]);
   const [history, setHistory] = useState<[]>([]);
@@ -41,7 +44,19 @@ export default function UserAPI(token: string) {
             headers: { Authorization: token, withCredentials: true },
           });
 
-          response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+          // response.data.role === 1 ? setIsSeller(true) : setIsSeller(false);
+
+          if (response.data.role === 1) {
+            setIsSeller(true);
+            setIsAdmin(false);
+          } else if (response.data.role === 2) {
+            setIsSeller(false);
+            setIsAdmin(true);
+          } else {
+            setIsSeller(false);
+            setIsAdmin(false);
+          }
+
           setIsLogged(true);
           setCart(response.data.cart);
           setInfor([
@@ -60,7 +75,7 @@ export default function UserAPI(token: string) {
   useEffect(() => {
     if (token) {
       const getHistory = async () => {
-        if (isAdmin) {
+        if (isSeller) {
           const response = await axios.get(
             `http://localhost:5000/api/payment`,
             {
@@ -80,7 +95,7 @@ export default function UserAPI(token: string) {
       };
       getHistory();
     }
-  }, [token, isAdmin]);
+  }, [token, isSeller, isAdmin]);
 
   const addCart = async (product: ProductType) => {
     // if (!isLogged) {
@@ -119,6 +134,8 @@ export default function UserAPI(token: string) {
     addCart,
     isLogged,
     setIsLogged,
+    isSeller,
+    setIsSeller,
     isAdmin,
     setIsAdmin,
     callback,
@@ -129,7 +146,7 @@ export default function UserAPI(token: string) {
     setInfor,
     cart,
     setCart,
-    // isAdmin: [isAdmin, setIsAdmin],
+    // isSeller: [isSeller, setIsSeller],
     // callback: [callback, setCallback],
     // history: [history, setHistory],
     // infor: [infor, setInfor],

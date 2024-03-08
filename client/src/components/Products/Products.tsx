@@ -48,7 +48,11 @@ export default function Products() {
           {products && (
             <div className="product__home--container">
               {products.map((product) => {
-                return <ProductItem key={product._id} product={product} />;
+                return (
+                  product.checked && (
+                    <ProductItem key={product._id} product={product} />
+                  )
+                );
               })}
             </div>
           )}

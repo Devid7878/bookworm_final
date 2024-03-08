@@ -25,6 +25,7 @@ export default function Cart() {
   const token = state?.token;
   const callback = state?.userAPI.callback;
   const setCallback = state?.userAPI.setCallback;
+  const isLogged = state?.userAPI.isLogged;
 
   // const [cart, setCart] = useState([]);
 

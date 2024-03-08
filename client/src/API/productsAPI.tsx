@@ -18,6 +18,7 @@ export type ProductsAPIType = {
     pageCount: number;
     isbn: string;
     authors: string[];
+    checked: boolean;
   }[];
   setProducts: React.Dispatch<React.SetStateAction<[]>>;
   result: number;

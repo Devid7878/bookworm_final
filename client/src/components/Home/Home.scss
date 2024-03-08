@@ -1,0 +1,38 @@
+$dark1: #23212a;
+$light1: #fef9f7;
+$accent: #ff8551;
+$black: black;
+$white: white;
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+
+  h1 {
+    overflow: hidden;
+    font-size: 3rem;
+  }
+  .hero {
+    img {
+      width: 700px;
+      height: 700px;
+      object-fit: cover;
+    }
+  }
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80%;
+  div {
+    height: 10rem;
+    background: $dark1;
+  }
+}
