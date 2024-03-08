@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     const user = await Users.findOne({ email });
     if (user) return res.status(400).json({ msg: 'The email already exists.' });
@@ -21,6 +21,7 @@ exports.register = async (req, res) => {
       name,
       email,
       password: passwordHash,
+      role,
     });
 
     // Save mongodb
