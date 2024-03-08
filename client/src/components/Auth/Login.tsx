@@ -26,9 +26,11 @@ export default function Login() {
   });
 
   const navigate = useNavigate();
+
   const state = React.useContext(GlobalState);
 
   const setIsLogged = state?.userAPI.setIsLogged;
+  const setToken = state?.setToken;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -52,7 +54,7 @@ export default function Login() {
 
       // const token = await res.json();
 
-      console.log(token);
+      setToken && setToken(token.data.accesstoken);
       localStorage.setItem('Login', 'true');
       localStorage.setItem('token', token.data.accesstoken);
       setIsLogged && setIsLogged(true);
@@ -113,10 +115,6 @@ export default function Login() {
                 autoComplete="current-password"
                 value={user.password}
                 onChange={handleChange}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
               />
               <Button
                 type="submit"

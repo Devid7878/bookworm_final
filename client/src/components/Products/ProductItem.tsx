@@ -37,7 +37,6 @@ export default function ProductItem({
           <div className="product__image--container">
             <img src={product.images.url} alt={product.title} />
           </div>
-          <div></div>
           <div className="product__content--container">
             <div className="product__content">
               {product.title.length > 20 ? (

@@ -51,11 +51,12 @@ export default function History() {
                         _id: string;
                         name: string;
                         email: string;
-                        address: {
-                          line1: string;
-                          city: string;
-                          country_code: string;
-                        };
+                        // address: {
+                        //   line1: string;
+                        //   city: string;
+                        //   country_code: string;
+                        // };
+                        address: string;
                         cart: [
                           {
                             title: string;
@@ -71,8 +72,9 @@ export default function History() {
                           </TableCell>
                           <TableCell className="history__item">
                             <p>
-                              {item.address.line1}-{item.address.city}-
-                              {item.address.country_code}
+                              {/* {item.address.line1}-{item.address.city}-
+                              {item.address.country_code} */}
+                              {item.address}
                             </p>
                           </TableCell>
                           <TableCell className="history__item">

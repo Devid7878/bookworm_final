@@ -118,13 +118,15 @@ export default function Cart() {
 
   const tranSuccess = async (payment: { address: string }) => {
     const { address } = payment;
-    await axios.post(
+    const res = await axios.post(
       `http://localhost:5000/api/payment`,
       { cart, address },
       {
         headers: { Authorization: token },
       }
     );
+
+    console.log(res);
     setCart && setCart([]);
     addToCart([]);
     Swal.fire('Success!', 'Thank you for purchase!', 'success');

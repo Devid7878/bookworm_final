@@ -25,7 +25,6 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   useEffect(() => {
     const login = localStorage.getItem('Login');
     if (login) {
-      console.log('REFRESH');
       const refreshToken = async () => {
         try {
           const response = await axios.get(

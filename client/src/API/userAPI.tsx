@@ -26,7 +26,7 @@ export default function UserAPI(token: string) {
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState<any>([]);
-  const [history, setHistory] = useState<any>([]);
+  const [history, setHistory] = useState<[]>([]);
   const [callback, setCallback] = useState(false);
   const [infor, setInfor] = useState<any>([]);
 
@@ -41,9 +41,8 @@ export default function UserAPI(token: string) {
             headers: { Authorization: token, withCredentials: true },
           });
 
-          setIsLogged(true);
           response.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
-
+          setIsLogged(true);
           setCart(response.data.cart);
           setInfor([
             response.data.name,
@@ -61,7 +60,6 @@ export default function UserAPI(token: string) {
   useEffect(() => {
     if (token) {
       const getHistory = async () => {
-        console.log(isAdmin);
         if (isAdmin) {
           const response = await axios.get(
             `http://localhost:5000/api/payment`,
@@ -78,7 +76,6 @@ export default function UserAPI(token: string) {
             }
           );
           setHistory(response.data);
-          console.log(response);
         }
       };
       getHistory();

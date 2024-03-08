@@ -8,7 +8,11 @@ export type CategoriesAPIType = {
     createdAt: string;
     updatedAt: string;
   }[];
-  setCategories: React.Dispatch<React.SetStateAction<[]>>;
+  setCategories: React.Dispatch<
+    React.SetStateAction<
+      { _id: string; name: string; createdAt: string; updatedAt: string }[]
+    >
+  >;
   callback: boolean;
   setCallback: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -19,7 +23,9 @@ export default function CategoriesAPI() {
 
   useEffect(() => {
     const getCategories = async () => {
-      const response = await axios.get(`http://localhost:5000/api/category`);
+      const response = await axios.get(`http://localhost:5000/api/category`, {
+        headers: { withCredentials: true },
+      });
       setCategories(response.data);
     };
     getCategories();

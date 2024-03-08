@@ -163,7 +163,7 @@ function Admin() {
                 {/*Orders */}
 
                 <Grid item xs={12}>
-                  <h2 className="page__header">History</h2>
+                  <h2 className="page__header">Orders</h2>
                   <Paper
                     sx={{ p: 2, display: 'flex', flexDirection: 'column' }}
                     className="paper__container"

@@ -5,25 +5,32 @@ import axios from 'axios';
 // import Logo from './images/logo.jpg';
 import './Header.css';
 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 export default function Header() {
   const state = useContext(GlobalState);
   const isLogged = state?.userAPI.isLogged;
+  const setIsLogged = state?.userAPI.setIsLogged;
   const isAdmin = state?.userAPI.isAdmin;
   const cart = state?.userAPI.cart;
   const search = state?.productsAPI.search;
   const setSearch = state?.productsAPI.setSearch;
   const infor = state?.userAPI.infor;
   const category = state?.productsAPI.category;
+  const products = state?.productsAPI.products;
+  const setProducts = state?.productsAPI.setProducts;
   const setCategory = state?.productsAPI.setCategory;
 
   const [handleSearch, setHandleSearch] = useState('');
+  const [allProducts, setAllProducts] = useState<any>([]);
 
-  const handleSubmit = (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (setSearch) setSearch(handleSearch);
-    setHandleSearch('');
-    // history.push('/products');
-  };
+  useEffect(() => {
+    async function getProducts() {
+      setSearch && setSearch(handleSearch);
+      setProducts && setProducts((products) => products);
+    }
+    getProducts();
+  }, [handleSearch]);
 
   const navigate = useNavigate();
 
@@ -33,6 +40,7 @@ export default function Header() {
     });
     localStorage.removeItem('Login');
     localStorage.removeItem('token');
+    setIsLogged && setIsLogged(false);
     navigate('/');
   };
 
@@ -51,6 +59,15 @@ export default function Header() {
               <h1>LOGO</h1>
             </Link>
           </div>
+          <div className="search__header--container">
+            <input
+              name=""
+              placeholder="Search for products..."
+              className="search__input"
+              value={handleSearch}
+              onChange={(e) => setHandleSearch(e.target.value)}
+            />
+          </div>
           <div className="navbar__container">
             <label htmlFor="menu__input">
               <i className="fas fa-bars menu__icon header__icon"></i>
@@ -68,7 +85,9 @@ export default function Header() {
                 <div className="nav__header">
                   <div className="flexrow infor__icon--mobile">
                     <i className="far fa-user"></i>
-                    {/* <p>{infor && infor[0]}</p> */}
+                    {infor?.map((i, idx) => (
+                      <p key={idx}>{i}</p>
+                    ))}
                   </div>
                   <div>
                     <label htmlFor="menu__input">
@@ -90,15 +109,16 @@ export default function Header() {
               <li>
                 <Link to="/products">PRODUCTS</Link>
               </li>
-              {isAdmin ? (
-                <li>
-                  <Link to="/admin">ADMIN</Link>
-                </li>
-              ) : (
-                <li>
-                  <Link to="/history">HISTORY</Link>
-                </li>
-              )}
+              {isLogged &&
+                (isAdmin ? (
+                  <li>
+                    <Link to="/admin">ADMIN</Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to="/history">HISTORY</Link>
+                  </li>
+                ))}
               {isLogged ? (
                 <li>
                   <Link
@@ -140,7 +160,7 @@ export default function Header() {
               <i className="fas fa-heart header__icon"></i>
             </Link>
           </div>
-          <div className="search__header--container">
+          {/* <div className="search__header--container">
             <form onSubmit={handleSubmit} className="search__form">
               <input
                 name=""
@@ -154,14 +174,15 @@ export default function Header() {
                 <p>Search</p>
               </button>
             </form>
-          </div>
+          </div> */}
           <div className="flexrow infor__icon">
             <i className="far fa-user header__icon"></i>
             {/* <p>{infor && infor[0]}</p> */}
           </div>
-          <div className="flexrow cart" style={{ marginRight: '8px' }}>
+          <div className="flexrow cart">
             <Link to="/cart">
-              <i className="fas fa-shopping-cart header__icon"></i>
+              {/* <i className="fas fa-shopping-cart header__icon"></i> */}
+              <ShoppingCartIcon style={{ fontSize: '30px' }} />
             </Link>
             <p>{cart?.length}</p>
           </div>

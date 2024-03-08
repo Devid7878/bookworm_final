@@ -27,8 +27,9 @@ const paymentSchema = new mongoose.Schema(
       default: [],
     },
     status: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: 'pending',
+      enum: ['pending', 'shipped', 'outfordelivery', 'delivered'],
     },
   },
   {

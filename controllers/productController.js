@@ -73,25 +73,30 @@ exports.createProduct = async (req, res) => {
       title,
       price,
       description,
-      content,
+      //   content,
       images,
       category,
-      sold,
+      //   sold,
+      pageCount,
+      authors,
     } = req.body;
+
+    const productExists = await Product.findOne({ product_id });
+    if (productExists)
+      return res.status(400).json({ msg: 'This product already exists.' });
 
     const product = await Product.create({
       product_id,
       title,
       price,
       description,
-      content,
+      //   content,
       images,
       category,
-      sold,
+      //   sold,
+      pageCount,
+      authors,
     });
-    const productExists = await Product.findOne({ product_id });
-    if (productExists)
-      return res.status(400).json({ msg: 'This product already exists.' });
 
     res.status(201).json({
       status: 'success',
@@ -100,7 +105,7 @@ exports.createProduct = async (req, res) => {
       },
     });
   } catch (err) {
-    return res.status(500).json({ msg: err });
+    return res.status(500).json({ msg: err.message });
   }
 };
 
@@ -142,7 +147,10 @@ exports.deleteProduct = async (req, res) => {
 // Update an existing product
 exports.updateProduct = async (req, res) => {
   try {
-    const updatedProduct = Product.findByIdAndUpdate(req.params.id, req.body);
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body
+    );
 
     res.status(200).json({
       status: 'success',

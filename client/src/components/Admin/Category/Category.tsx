@@ -13,9 +13,12 @@ import axios from 'axios';
 export default function Category() {
   const state = React.useContext(GlobalState);
   const categories = state?.categoriesAPI.categories;
+  const setCategories = state?.categoriesAPI.setCategories;
   const token = state?.token;
   const callback = state?.userAPI.callback;
   const setCallback = state?.userAPI.setCallback;
+  const isAdmin = state?.userAPI.isAdmin;
+
   const [category, setCategory] = useState('');
   const [edit, setEdit] = useState(false);
   const [id, setId] = useState('');
@@ -26,27 +29,44 @@ export default function Category() {
   const createCategory = async () => {
     try {
       if (token) {
-        headers.Authorization = `Bearer ${token}`;
+        headers.Authorization = token;
       }
+
+      if (!isAdmin) return Swal.fire('Error', 'You are not Authorized!');
 
       if (edit) {
         const response = await axios.put(
-          `/api/category/${id}`,
+          `http://localhost:5000/api/category/${id}`,
           { name: category },
           {
-            // headers: { Authorization: token },
-            headers,
+            headers: { Authorization: token, withCredentials: true },
           }
         );
+
+        setCategories &&
+          setCategories((categories) =>
+            categories?.map((category) =>
+              category._id === id
+                ? { ...category, name: response.data.category.name }
+                : category
+            )
+          );
+
         Swal.fire('Success!', response.data.msg, 'success');
       } else {
         const response = await axios.post(
-          `/api/category`,
+          `http://localhost:5000/api/category`,
           { name: category },
           {
-            headers: { Authorization: false },
+            headers: { Authorization: token, withCredentials: true },
           }
         );
+        console.log(response);
+        setCategories &&
+          setCategories((categories) => [
+            ...categories,
+            response.data.category,
+          ]);
         Swal.fire('Success!', response.data.msg, 'success');
       }
       if (setCallback) setCallback(!callback);
@@ -58,18 +78,28 @@ export default function Category() {
       Swal.fire('Error', err.response.data.msg);
     }
   };
+
   const editCategory = (id: string, name: string) => {
     setEdit(true);
     setId(id);
     setCategory(name);
   };
+
   const deleteCategory = async (id: string) => {
     try {
-      const response = await axios.delete(`/api/category/${id}`, {
-        // headers: { Authorization: token },
-        headers,
-      });
-      Swal.fire('Success!', response.data.msg);
+      const response = await axios.delete(
+        `http://localhost:5000/api/category/${id}`,
+        {
+          headers: { Authorization: token, withCredentials: true },
+        }
+      );
+      Swal.fire('Success!', 'Category deleted!');
+
+      const filteredCategories = categories?.filter(
+        (category) => category._id !== id
+      );
+
+      setCategories && filteredCategories && setCategories(filteredCategories);
     } catch (err: any) {
       Swal.fire('Error', err.response.data.msg, 'error');
     }
@@ -79,7 +109,7 @@ export default function Category() {
     <div className="order__item">
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">
-          Name Category
+          Category: &nbsp;&nbsp;&nbsp;&nbsp;
         </label>
         <input
           type="text"
@@ -87,13 +117,14 @@ export default function Category() {
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="Enter your category..."
-          style={{ fontSize: '2rem' }}
+          style={{ fontSize: '20px' }}
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
         <button
           type="submit"
           className="create__category--btn"
+          style={{ maxWidth: '10%', fontSize: '15px' }}
           onClick={createCategory}
         >
           {edit ? 'UPDATE' : 'CREATE'}

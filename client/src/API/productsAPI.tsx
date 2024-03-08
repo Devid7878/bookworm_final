@@ -15,6 +15,9 @@ export type ProductsAPIType = {
     description: string;
     content: string;
     sold: number;
+    pageCount: number;
+    isbn: string;
+    authors: string[];
   }[];
   setProducts: React.Dispatch<React.SetStateAction<[]>>;
   result: number;
@@ -43,8 +46,8 @@ export default function ProductsAPI() {
   useEffect(() => {
     const getProducts = async () => {
       let link = `http://localhost:5000/api/products?limit=${
-        page * 3
-      }&${category}&${sort}&title[regex]=${search}`;
+        page * 6
+      }&${category}&sort=${sort}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
       console.log(link);
       const response = await axios.get(link);

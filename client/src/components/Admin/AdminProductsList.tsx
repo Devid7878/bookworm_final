@@ -26,6 +26,10 @@ let initialState = {
   images: {
     url: '',
   },
+  pageCount: 0,
+  isbn: '',
+  sold: 0,
+  authors: [''],
 };
 
 export default function AdminProductsList() {
@@ -41,7 +45,7 @@ export default function AdminProductsList() {
 
   const [product, setProduct] = useState(initialState);
   const [onEdit, setOnEdit] = useState(false);
-  const [images, setImages] = useState({ url: '', public_id: '' });
+  const [images, setImages] = useState({ url: '' });
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -63,7 +67,7 @@ export default function AdminProductsList() {
     } else {
       setOnEdit(false);
       setProduct(initialState);
-      setImages({ url: '', public_id: '' });
+      setImages({ url: '' });
     }
   }, [params, product.images, products]);
 
@@ -74,6 +78,7 @@ export default function AdminProductsList() {
         Swal.fire('You are not admin!', 'error');
       }
       const file = e.target.files && e.target?.files[0];
+      console.log(file);
       if (!file) return Swal.fire('File not exist');
       if (file.size > 1024 * 1024)
         return Swal.fire('File format is incorrect.');
@@ -81,12 +86,17 @@ export default function AdminProductsList() {
       let formData = new FormData();
       formData.append('file', file);
       setLoading(true);
-      const response = await axios.post(`api/upload`, formData, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          Authorization: token,
-        },
-      });
+      const response = await axios.post(
+        `http://localhost:5000/api/upload`,
+        formData,
+        {
+          headers: {
+            'content-type': 'multipart/form-data',
+            Authorization: token,
+            withCredentials: true,
+          },
+        }
+      );
       setLoading(false);
       setImages(response.data);
     } catch (err: any) {
@@ -103,27 +113,27 @@ export default function AdminProductsList() {
     setProduct({ ...product, [name]: value });
   };
 
-  const handleDestroy = async () => {
-    try {
-      setLoading(true);
-      if (!isAdmin) return Swal.fire("You're not an admin");
-      setLoading(true);
-      await axios.post(
-        '/api/destroy',
-        { public_id: images.public_id },
-        {
-          headers: {
-            Authorization: token,
-            withCredentials: true,
-          },
-        }
-      );
-      setImages({ url: '', public_id: '' });
-      setLoading(false);
-    } catch (err: any) {
-      Swal.fire(err.response.data.msg);
-    }
-  };
+  // const handleDestroy = async () => {
+  //   try {
+  //     setLoading(true);
+  //     if (!isAdmin) return Swal.fire("You're not an admin");
+  //     setLoading(true);
+  //     await axios.post(
+  //       '/api/destroy',
+  //       { public_id: images.public_id },
+  //       {
+  //         headers: {
+  //           Authorization: token,
+  //           withCredentials: true,
+  //         },
+  //       }
+  //     );
+  //     setImages({ url: '', public_id: '' });
+  //     setLoading(false);
+  //   } catch (err: any) {
+  //     Swal.fire(err.response.data.msg);
+  //   }
+  // };
 
   const handleSubmit = async (
     e: React.MouseEvent<HTMLFormElement, MouseEvent>
@@ -135,25 +145,32 @@ export default function AdminProductsList() {
 
       if (onEdit) {
         await axios.put(
-          `/api/products/${product._id}`,
+          `http://localhost:5000/api/products/${product._id}`,
           { ...product, images },
           {
-            headers: { Authorization: token },
+            headers: { Authorization: token, withCredentials: true },
           }
         );
       } else {
+        console.log({ ...product, images });
         await axios.post(
-          `/api/products`,
-          { ...product, images },
+          `http://localhost:5000/api/products`,
           {
-            headers: { Authorization: token },
+            ...product,
+            images,
+          },
+          {
+            headers: {
+              Authorization: token,
+              withCredentials: true,
+            },
           }
         );
       }
       setCallback && setCallback(!callback);
       navigate('/admin');
     } catch (err: any) {
-      Swal.fire('Error', err.response.data.msg, 'error');
+      Swal.fire('Error', err.response.msg, 'error');
     }
   };
 
@@ -197,11 +214,10 @@ export default function AdminProductsList() {
         <h2 className="page__header">Create Products</h2>
         <Paper
           sx={{
-            p: 2,
+            // p: 2,
             display: 'flex',
             justifyContent: 'space-between',
-            flexDirection: 'row',
-            height: '600px',
+            // height: '600px',
             maxWidth: onEdit ? '1200px' : 'auto',
           }}
         >
@@ -235,7 +251,7 @@ export default function AdminProductsList() {
                     />
                     <i
                       className="far fa-times-circle"
-                      onClick={handleDestroy}
+                      // onClick={handleDestroy}
                     ></i>
                   </div>
                 )}
@@ -251,16 +267,17 @@ export default function AdminProductsList() {
                 flexDirection: 'column',
               }}
             >
-              <div className="updata__content">
+              <div className="update__content">
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label htmlFor="productID">ProductID</label>
+                    <label htmlFor="productID">ISBN of book</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                       type="text"
                       name="product_id"
                       className="form-control create__product--input"
                       id="product_id"
-                      placeholder="ProductID..."
+                      placeholder="ISBN of a Book"
                       disabled={onEdit}
                       value={product.product_id}
                       onChange={handleChangeInput}
@@ -268,6 +285,7 @@ export default function AdminProductsList() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="title">Title</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                       type="text"
                       name="title"
@@ -280,6 +298,7 @@ export default function AdminProductsList() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="price">Price</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                       type="text"
                       name="price"
@@ -292,6 +311,7 @@ export default function AdminProductsList() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="description">Description</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                       type="text"
                       name="description"
@@ -303,7 +323,46 @@ export default function AdminProductsList() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="content">Content</label>
+                    <label htmlFor="pageCount">No of pages</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input
+                      type="text"
+                      name="pageCount"
+                      className="form-control create__product--input"
+                      id="pageCount"
+                      placeholder="Page Count..."
+                      value={product.pageCount}
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="authors">Authors</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input
+                      type="text"
+                      name="authors"
+                      className="form-control create__product--input"
+                      id="authors"
+                      placeholder="Author"
+                      value={product.authors}
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+                  {/* <div className="form-group">
+                    <label htmlFor="isbn">ISBN of book</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input
+                      type="text"
+                      name="isbn"
+                      className="form-control create__product--input"
+                      id="isbn"
+                      placeholder="ISBN of Book"
+                      value={product.isbn}
+                      onChange={handleChangeInput}
+                    />
+                  </div> */}
+                  {/* <div className="form-group">
+                    <label htmlFor="content">Content</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <textarea
                       name="content"
                       className="form-control create__product--input"
@@ -312,7 +371,7 @@ export default function AdminProductsList() {
                       value={product.content}
                       onChange={handleChangeInput}
                     ></textarea>
-                  </div>
+                  </div> */}
                   <select
                     name="category"
                     className="form-control create__product--input"
@@ -345,18 +404,11 @@ export default function AdminProductsList() {
         </Paper>
       </Grid>
 
-      <Grid item xs={12} md={9} lg={9}>
-        <Paper
-          sx={{
-            p: 2,
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-          className="paper__container"
-        >
+      <Grid item xs={12} md={12} lg={12}>
+        <Paper className="paper__container">
           <React.Fragment>
             <h2>Products List</h2>
-            <Table size="medium">
+            <Table style={{ width: '100%' }}>
               <TableHead>
                 <TableRow>
                   <TableCell className="order__item">Name</TableCell>
@@ -415,13 +467,14 @@ export default function AdminProductsList() {
         </Paper>
       </Grid>
 
-      <Grid item xs={12} md={3} lg={3}>
+      <Grid item xs={12} md={12} lg={12}>
         <Paper
           sx={{
             p: 2,
             display: 'flex',
-            flexDirection: 'column',
-            height: 200,
+            flexDirection: 'row',
+            height: 100,
+            justifyContent: 'space-around',
           }}
         >
           <div>
