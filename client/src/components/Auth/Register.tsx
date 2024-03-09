@@ -52,88 +52,87 @@ export default function Register() {
     }
   };
   return (
-    <div className="main">
-      <ThemeProvider theme={theme}>
-        <Container component="main">
-          <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              {/* <LockOutlinedIcon /> */}
-            </Avatar>
-            <Typography component="h1" variant="h3">
-              Register
-            </Typography>
-            <Box
-              component="form"
-              onSubmit={registerSubmit}
-              noValidate
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="name"
-                label="Name"
-                name="name"
-                autoComplete="name"
-                autoFocus
-                value={user.name}
-                onChange={onChangeInput}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="email"
-                name="email"
-                autoComplete="email"
-                value={user.email}
-                onChange={onChangeInput}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={user.password}
-                onChange={onChangeInput}
-              />
-              <Checkbox
-                value={user.role}
-                checked={isChecked}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setIsChecked((isChecked) => !isChecked);
-                  e.target.checked
-                    ? setUser({ ...user, role: 1 })
-                    : setUser({ ...user, role: 0 });
-                }}
-              />{' '}
-              Want to become a Seller?
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                style={{ fontSize: '1.8rem' }}
-              >
-                Register
-              </Button>
-            </Box>
-          </Box>
-        </Container>
-      </ThemeProvider>
-    </div>
-  );
+		<div className='main'>
+			<Container
+				component='main'
+				sx={{ display: 'flex', justifyContent: 'center' }}>
+				<Box
+					sx={{
+						marginTop: 8,
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						maxWidth: '50%',
+					}}>
+					<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+						{/* <LockOutlinedIcon /> */}
+					</Avatar>
+					<Typography component='h5' variant='h5'>
+						Register
+					</Typography>
+					<Box
+						component='form'
+						onSubmit={registerSubmit}
+						noValidate
+						sx={{ mt: 1 }}>
+						<TextField
+							margin='normal'
+							required
+							fullWidth
+							id='name'
+							label='Name'
+							name='name'
+							autoComplete='name'
+							autoFocus
+							value={user.name}
+							onChange={onChangeInput}
+						/>
+						<TextField
+							margin='normal'
+							required
+							fullWidth
+							id='email'
+							label='Email Address'
+							name='email'
+							autoFocus
+							autoComplete='Email Address'
+							value={user.email}
+							onChange={onChangeInput}
+						/>
+						<TextField
+							margin='normal'
+							required
+							fullWidth
+							name='password'
+							label='Password'
+							type='password'
+							id='password'
+							autoComplete='current-password'
+							value={user.password}
+							onChange={onChangeInput}
+						/>
+						<Checkbox
+							value={user.role}
+							checked={isChecked}
+							onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+								setIsChecked((isChecked) => !isChecked);
+								e.target.checked
+									? setUser({ ...user, role: 1 })
+									: setUser({ ...user, role: 0 });
+							}}
+						/>{' '}
+						Want to become a Seller?
+						<Button
+							type='submit'
+							fullWidth
+							variant='contained'
+							sx={{ mt: 3, mb: 2 }}
+							style={{ fontSize: '1rem' }}>
+							Register
+						</Button>
+					</Box>
+				</Box>
+			</Container>
+		</div>
+	);
 }

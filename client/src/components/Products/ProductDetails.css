@@ -1,0 +1,57 @@
+.main .detail__container {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+  margin: 3rem auto;
+  height: 60vh;
+}
+.main .detail__image--container {
+  max-width: 40vw;
+  max-height: 40vh;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 40px;
+}
+.main .detail__image--container img {
+  width: 22vw;
+}
+.main .detail__content--container .detail__content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  text-align: justify;
+  padding: 3rem 3rem;
+  gap: 1.6rem;
+}
+.main .detail__content--container .detail__content h1 {
+  font-size: 2.5rem;
+}
+.main .detail__content--container .detail__content p {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.main .detail__content--container .detail__content .description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 20vh;
+  overflow: hidden;
+}
+.main .detail__content--container .detail__content .description span {
+  font-size: 1rem;
+  font-weight: 800;
+}
+.main .detail__content--container .detail__content .description p {
+  font-weight: lighter;
+}
+.main .detail__content--container .detail__content button {
+  border: 1px solid #23212a;
+  color: #fef9f7;
+  padding: 0.5rem 1rem;
+  background: #23212a;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+.main .detail__content--container .detail__content button:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.3);
+}/*# sourceMappingURL=ProductDetails.css.map */

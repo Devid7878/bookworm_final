@@ -39,24 +39,26 @@ export default function ProductsAPI() {
   const [products, setProducts] = useState<any>([]);
   const [callback, setCallback] = useState(false);
   const [category, setCategory] = useState('');
-  const [sort, setSort] = useState('');
-  const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [result, setResult] = useState(0);
+  const [sort, setSort] = useState('checked');
+	const [search, setSearch] = useState('');
+	const [page, setPage] = useState(1);
+	const [result, setResult] = useState(0);
 
-  useEffect(() => {
-    const getProducts = async () => {
-      let link = `http://localhost:5000/api/products?limit=${
-        page * 6
-      }&${category}&sort=${sort}&titleLowerCase[regex]=${search.toLowerCase()}`;
+	useEffect(() => {
+		const getProducts = async () => {
+			let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
+				page * 6
+			}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
-      console.log(link);
-      const response = await axios.get(link);
-      setProducts(response.data.products);
-      setResult(response.data.result);
-    };
-    getProducts();
-  }, [category, page, sort, search, callback]);
+			// let link = `http://localhost:5000/api/products`;
+
+			console.log(link);
+			const response = await axios.get(link);
+			setProducts(response.data.products);
+			setResult(response.data.result);
+		};
+		getProducts();
+	}, [category, page, sort, search, callback]);
 
   return {
     products,

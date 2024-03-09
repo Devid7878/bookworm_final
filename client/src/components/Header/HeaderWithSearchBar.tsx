@@ -3,33 +3,31 @@ import { Link, useNavigate } from 'react-router-dom';
 import { GlobalState } from '../../globalState/GlobalState';
 import axios from 'axios';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-// import Logo from './images/logo.jpg';
 import './Header.css';
-// import './Header.scss';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
-export default function Header() {
-  const state = useContext(GlobalState);
-  const isLogged = state?.userAPI.isLogged;
-  const setIsLogged = state?.userAPI.setIsLogged;
-  const isSeller = state?.userAPI.isSeller;
-  const isAdmin = state?.userAPI.isAdmin;
-  // const isAdmin  = state?.userAPI.isAdmin;
-  const cart = state?.userAPI.cart;
-  const search = state?.productsAPI.search;
-  const setSearch = state?.productsAPI.setSearch;
-  const infor = state?.userAPI.infor;
-  const category = state?.productsAPI.category;
-  const products = state?.productsAPI.products;
-  const setProducts = state?.productsAPI.setProducts;
-  const setCategory = state?.productsAPI.setCategory;
+export default function HeaderWithSearchBar() {
+	const state = useContext(GlobalState);
+	const isLogged = state?.userAPI.isLogged;
+	const setIsLogged = state?.userAPI.setIsLogged;
+	const isSeller = state?.userAPI.isSeller;
+	const isAdmin = state?.userAPI.isAdmin;
+	// const isAdmin  = state?.userAPI.isAdmin;
+	const cart = state?.userAPI.cart;
+	const search = state?.productsAPI.search;
+	const setSearch = state?.productsAPI.setSearch;
+	const infor = state?.userAPI.infor;
+	const category = state?.productsAPI.category;
+	const products = state?.productsAPI.products;
+	const setProducts = state?.productsAPI.setProducts;
+	const setCategory = state?.productsAPI.setCategory;
 
-  const [handleSearch, setHandleSearch] = useState('');
-  const [allProducts, setAllProducts] = useState<any>([]);
+	const [handleSearch, setHandleSearch] = useState('');
+	const [allProducts, setAllProducts] = useState<any>([]);
 
-  console.log('isAdmin: ', isAdmin, 'isSeller: ', isSeller);
+	console.log('isAdmin: ', isAdmin, 'isSeller: ', isSeller);
 
 	useEffect(() => {
 		async function getProducts() {
@@ -64,6 +62,16 @@ export default function Header() {
 						}}>
 						<h1>LOGO</h1>
 					</Link>
+				</div>
+				<div className='search-bar'>
+					<SearchRoundedIcon />
+					<input
+						name=''
+						placeholder='Search for products...'
+						className='search__input'
+						value={handleSearch}
+						onChange={(e) => setHandleSearch(e.target.value)}
+					/>
 				</div>
 				<div className='nav-links-container'>
 					<ul className='nav-links'>

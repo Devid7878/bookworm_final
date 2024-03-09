@@ -105,15 +105,35 @@ exports.refreshToken = (req, res) => {
   }
 };
 
-exports.getUser = async (req, res) => {
-  try {
-    const user = await Users.findById(req.user.id).select('-password');
-    if (!user) return res.status(400).json({ msg: 'User does not exist.' });
+exports.getAllUsers = async (req, res) => {
+	try {
+		const users = await Users.find().select('-password');
 
-    res.json(user);
-  } catch (err) {
-    return res.status(500).json({ msg: err.message });
-  }
+		res.json(users);
+	} catch (err) {
+		return res.status(500).json({ msg: err.message });
+	}
+};
+
+exports.getUser = async (req, res) => {
+	try {
+		const user = await Users.findById(req.user.id).select('-password');
+		if (!user) return res.status(400).json({ msg: 'User does not exist.' });
+
+		res.json(user);
+	} catch (err) {
+		return res.status(500).json({ msg: err.message });
+	}
+};
+
+exports.deleteUser = async (req, res) => {
+	try {
+		if (!req.params.id) return res.status(403).json({ msg: 'No user found!' });
+		await Users.findByIdAndDelete(req.params.id).select('-password');
+		res.status(204).json({ data: null });
+	} catch (err) {
+		return res.status(500).json({ msg: err.message });
+	}
 };
 
 exports.addToCart = async (req, res) => {

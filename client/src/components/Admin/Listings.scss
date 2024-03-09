@@ -1,0 +1,62 @@
+
+.tbody, .table{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    gap: 1rem;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid black;
+
+    .title, .price, .category, .authors{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            max-width: 6vw;
+            img{
+                width: 5vw; 
+            }
+            
+            p{
+                font-size: 12px;
+                overflow: hidden;
+                }
+    }
+
+    .title{
+        text-align: justify;
+        padding: 0.3rem;
+        min-width: 20vw;
+        justify-content: left;
+    }
+
+    .app-rej{
+        display: flex;
+        justify-content: space-around;
+        padding: 0.1rem;
+        align-items: center;
+
+        button{
+            padding: 0.3rem 0.2rem;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            min-width: 4vw;
+        }
+
+        button:nth-child(1){
+            background: rgb(14, 173, 91);
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+        }
+
+        button:nth-child(2){
+            background: tomato;
+            color: white;
+            border-radius: 5px;
+        }
+
+    }
+}

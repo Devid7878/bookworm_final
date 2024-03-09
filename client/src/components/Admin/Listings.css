@@ -1,0 +1,53 @@
+.tbody, .table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.tbody .title, .tbody .price, .tbody .category, .tbody .authors, .table .title, .table .price, .table .category, .table .authors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 6vw;
+}
+.tbody .title img, .tbody .price img, .tbody .category img, .tbody .authors img, .table .title img, .table .price img, .table .category img, .table .authors img {
+  width: 5vw;
+}
+.tbody .title p, .tbody .price p, .tbody .category p, .tbody .authors p, .table .title p, .table .price p, .table .category p, .table .authors p {
+  font-size: 12px;
+  overflow: hidden;
+}
+.tbody .title, .table .title {
+  text-align: justify;
+  padding: 0.3rem;
+  min-width: 20vw;
+  justify-content: left;
+}
+.tbody .app-rej, .table .app-rej {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.1rem;
+  align-items: center;
+}
+.tbody .app-rej button, .table .app-rej button {
+  padding: 0.3rem 0.2rem;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  min-width: 4vw;
+}
+.tbody .app-rej button:nth-child(1), .table .app-rej button:nth-child(1) {
+  background: rgb(14, 173, 91);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+.tbody .app-rej button:nth-child(2), .table .app-rej button:nth-child(2) {
+  background: tomato;
+  color: white;
+  border-radius: 5px;
+}/*# sourceMappingURL=Listings.css.map */

@@ -1,13 +1,12 @@
-// import {Spinner} from "react-bootstrap"
-import Spinner from './images/Spinner-1s-200px.gif';
+import { useEffect, useState } from 'react';
+import Spinner from './images/spinner.gif';
 
 export default function Loading() {
-  return (
-    //     <Spinner animation="border" role="status" className="loading container">
-    //         <span className="visually-hidden"></span>
-    //    </Spinner>
-    <div className="loading">
-      <img src={Spinner} alt="loading" />
-    </div>
-  );
+	return (
+		<div>
+			<div className='loader'>
+				<img src={Spinner} alt='loader' />
+			</div>
+		</div>
+	);
 }

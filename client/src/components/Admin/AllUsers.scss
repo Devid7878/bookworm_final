@@ -1,0 +1,59 @@
+.tbody-user,
+.table-user {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	justify-content: center;
+	gap: 1rem;
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid black;
+
+	.name,
+	.email,
+	.role,
+	.delete {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		img {
+			width: 5vw;
+		}
+
+		p {
+			font-size: 12px;
+			overflow: hidden;
+		}
+	}
+
+	.email {
+		text-align: justify;
+		padding: 0.3rem;
+		justify-content: left;
+		min-width: 20vw;
+	}
+
+	.delete {
+		display: flex;
+		justify-content: space-around;
+		padding: 0.1rem;
+		align-items: center;
+
+		button {
+			padding: 0.3rem 0.2rem;
+			font-size: 12px;
+			font-weight: 500;
+			border: none;
+			cursor: pointer;
+			min-width: 4vw;
+			background: tomato;
+			color: white;
+			border-radius: 5px;
+		}
+
+        button:hover{
+            transition: all 0.2s ease-in-out;
+            transform: scale(1.2);
+        }
+	}
+}

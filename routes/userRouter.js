@@ -12,6 +12,10 @@ router.get('/refresh_token', userController.refreshToken)
 
 router.get('/infor', auth, userController.getUser)
 
+router.get('/', userController.getAllUsers);
+
+router.delete('/:id', userController.deleteUser);
+
 router.patch('/addcart', auth, userController.addToCart)
 
 router.get('/history', auth, userController.history)
