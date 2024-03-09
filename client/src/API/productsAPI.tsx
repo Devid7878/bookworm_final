@@ -46,11 +46,11 @@ export default function ProductsAPI() {
 
 	useEffect(() => {
 		const getProducts = async () => {
-			let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
-				page * 6
-			}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
+			// let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
+			// 	page * 6
+			// }&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
-			// let link = `http://localhost:5000/api/products`;
+			let link = `http://localhost:5000/api/products?&sort=${sort}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
 			console.log(link);
 			const response = await axios.get(link);

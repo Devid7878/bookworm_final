@@ -19,6 +19,8 @@ import axios from 'axios';
 import Listings from './components/Admin/Listings';
 import Home from './components/Home/Home';
 import AllUsers from './components/Admin/AllUsers';
+import Cartt from './components/Cart/Cartt';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
 	const state = useContext(GlobalState);
@@ -52,7 +54,8 @@ function App() {
 						<Route path='/register' element={!isLogged && <Register />} />
 						<Route path='/login' element={!isLogged && <Login />} />
 						<Route path='/history' element={<History />} />
-						<Route path='/cart' element={<Cart />} />
+						<Route path='/cart' element={<Cartt />} />
+						<Route path='/checkout' element={<Checkout />} />
 						<Route path='/seller' element={<Seller />} />
 						<Route path='/seller/:id' element={<Seller />} />
 						<Route path='/book-listings' element={<Listings />} />

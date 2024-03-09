@@ -3,21 +3,21 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
 export type UserAPIType = {
-  isLogged: boolean;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
-  isSeller: boolean;
-  setIsSeller: React.Dispatch<React.SetStateAction<boolean>>;
-  isAdmin: boolean;
-  setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
-  callback: boolean;
-  setCallback: React.Dispatch<React.SetStateAction<boolean>>;
-  history: [];
-  setHistory: React.Dispatch<React.SetStateAction<[]>>;
-  infor: [];
-  setInfor: React.Dispatch<React.SetStateAction<[]>>;
-  cart: [];
-  setCart: React.Dispatch<React.SetStateAction<[]>>;
-  addCart: (p: ProductType) => Promise<any>;
+	isLogged: boolean;
+	setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+	isSeller: boolean;
+	setIsSeller: React.Dispatch<React.SetStateAction<boolean>>;
+	isAdmin: boolean;
+	setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
+	callback: boolean;
+	setCallback: React.Dispatch<React.SetStateAction<boolean>>;
+	history: [];
+	setHistory: React.Dispatch<React.SetStateAction<[]>>;
+	infor: [];
+	setInfor: React.Dispatch<React.SetStateAction<[]>>;
+	cart: [{ price: number; quantity: number }];
+	setCart: React.Dispatch<React.SetStateAction<[]>>;
+	addCart: (p: ProductType) => Promise<any>;
 };
 
 type ProductType = {

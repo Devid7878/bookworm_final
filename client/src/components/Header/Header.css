@@ -55,7 +55,18 @@ header nav .nav-links-container .nav-links {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  gap: 2rem;
+  gap: 3rem;
+}
+header nav .nav-links-container .nav-links .shopping-cart span {
+  background: #ff8551;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  text-align: center;
+  position: relative;
+  top: -15px;
+  left: -12px;
 }
 header nav .nav-links-container .nav-links li {
   transition: all 0.2s ease-in-out;

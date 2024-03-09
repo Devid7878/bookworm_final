@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import './Header.css';
 
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 
 export default function HeaderWithSearchBar() {
@@ -99,15 +99,23 @@ export default function HeaderWithSearchBar() {
 							))}
 
 						{isLogged ? (
-							<li>
-								<Link
-									to='/'
-									onClick={logoutUser}
-									className='logout-button button'>
-									Logout
-									<LogoutRoundedIcon />
-								</Link>
-							</li>
+							<>
+								<li>
+									<Link to='/cart' className='shopping-cart'>
+										<ShoppingCartRoundedIcon />
+										<span>{cart?.length}</span>
+									</Link>
+								</li>
+								<li>
+									<Link
+										to='/'
+										onClick={logoutUser}
+										className='logout-button button'>
+										Logout
+										<LogoutRoundedIcon />
+									</Link>
+								</li>
+							</>
 						) : (
 							<>
 								<li>
