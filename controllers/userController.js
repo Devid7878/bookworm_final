@@ -49,28 +49,28 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+		const { email, password } = req.body;
 
-    const user = await Users.findOne({ email });
-    if (!user) return res.status(404).json({ msg: 'User does not exist.' });
+		const user = await Users.findOne({ email });
+		if (!user) return res.status(404).json({ msg: 'User does not exist.' });
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: 'Incorrect password.' });
+		const isMatch = await bcrypt.compare(password, user.password);
+		if (!isMatch) return res.status(400).json({ msg: 'Incorrect password.' });
 
-    // If login success, create accesstoken and refreshtoken
-    const accesstoken = createAccessToken({ id: user._id });
-    const refreshtoken = createRefreshToken({ id: user._id });
+		// If login success, create accesstoken and refreshtoken
+		const accesstoken = createAccessToken({ id: user._id });
+		const refreshtoken = createRefreshToken({ id: user._id });
 
-    res.cookie('refreshtoken', refreshtoken, {
-      httpOnly: true,
-      // path: '/user/refresh_token',
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
+		// Set the refreshtoken to cookie in browser headers
+		res.cookie('refreshtoken', refreshtoken, {
+			httpOnly: true,
+			maxAge: 7 * 24 * 60 * 60 * 1000,
+		});
 
-    res.status(200).json({
-      accesstoken,
-    });
-  } catch (err) {
+		res.status(200).json({
+			accesstoken,
+		});
+	} catch (err) {
     return res.status(500).json({ msg: err.message });
   }
 };

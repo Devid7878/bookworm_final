@@ -50,14 +50,11 @@ export default function Login() {
 				},
 			);
 
-			// const token = await res.json();
-
 			// setToken && setToken(token.data.accesstoken);
-			if (token) localStorage.setItem('Login', 'true');
-			// if (token) localStorage.setItem('token', token.data.accesstoken);
-			if (token) setIsLogged && setIsLogged(true);
-
-			navigate('/');
+			token && localStorage.setItem('Login', 'true');
+			token && localStorage.setItem('token', token.data.accesstoken);
+			token && setIsLogged && setIsLogged(true);
+			token && navigate('/');
 		} catch (err: any) {
 			const options: SweetAlertOptions = {
 				title: 'Error',

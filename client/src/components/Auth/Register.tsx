@@ -40,14 +40,15 @@ export default function Register() {
 	const registerSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		try {
-			await axios.post(
+			const token = await axios.post(
 				'/user/register',
 				{ ...user },
 				{ withCredentials: true },
 			);
 			localStorage.setItem('Login', 'true');
-			setIsLogged && setIsLogged(true);
-			navigate('/');
+
+			token && setIsLogged && setIsLogged(true);
+			token && navigate('/');
 		} catch (err: any) {
 			Swal.fire(err.response.data.msg);
 		}
