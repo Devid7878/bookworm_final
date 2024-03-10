@@ -1,0 +1,86 @@
+.top-header-checkout a {
+  text-decoration: none;
+  background: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.checkout-container .address-details {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+}
+.checkout-container .address-details .ads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.checkout-container .address-details .ads div img {
+  width: 5rem;
+}
+.checkout-container .address-details p {
+  font-size: 30px;
+  font-weight: bold;
+}
+.checkout-container .address-details .card-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.checkout-container .address-details .card-name input {
+  border-radius: 0.5rem;
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.checkout-container .address-details .card-name input:focus {
+  outline: none;
+}
+.checkout-container .address-details .expiry label div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.checkout-container .address-details .expiry input {
+  border-radius: 0.5rem;
+  width: 5rem;
+  background: white;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+.checkout-container .address-details .expiry input:focus {
+  outline: none;
+}
+
+.payment button {
+  background: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  width: 30vw;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+
+.checkout-main-container {
+  display: flex;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  padding: 2rem 0;
+}

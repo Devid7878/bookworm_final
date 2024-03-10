@@ -7,22 +7,24 @@ exports.register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
-    const user = await Users.findOne({ email });
-    if (user) return res.status(400).json({ msg: 'The email already exists.' });
+		const user = await Users.findOne({ email });
+		if (user) return res.status(400).json({ msg: 'Email already exists.' });
 
-    if (password.length < 6)
-      return res
-        .status(400)
-        .json({ msg: 'Password is at least 6 charactes long.' });
+		if (password.length < 6)
+			return res
+				.status(400)
+				.json({ msg: 'Password must be at least 6 characters long.' });
 
-    // Password encryption
-    const passwordHash = await bcrypt.hash(password, 10);
-    const newUser = await Users({
-      name,
-      email,
-      password: passwordHash,
-      role,
-    });
+		// Password encryption
+		// const passwordHash = await bcrypt.hash(password, 10);
+
+		const newUser = await Users.create({
+			name,
+			email,
+			password,
+			role,
+			passwordConfirm,
+		});
 
     // Save mongodb
     await newUser.save();

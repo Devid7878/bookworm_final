@@ -27,15 +27,17 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     if (login) {
       const refreshToken = async () => {
         try {
-          const response = await axios.get(
-            'http://localhost:5000/user/refresh_token',
-            {
-              withCredentials: true,
-            }
-          );
+					// THis will verify a token for authorized user by taking token from the cookie setted inside the browser headers
+					const response = await axios.get(
+						'http://localhost:5000/user/refresh_token',
+						{
+							withCredentials: true,
+						},
+					);
 
-          setToken(response.data.accesstoken);
-        } catch (error) {
+					console.log('REFRESHING THE REFRESH TOKEN...');
+					setToken(response.data.accesstoken);
+				} catch (error) {
           console.error('Error refreshing token:', error);
         }
       };

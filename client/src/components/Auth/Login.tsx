@@ -17,8 +17,6 @@ import { GlobalState } from '../../globalState/GlobalState';
 
 import './dist/Login.css';
 
-const theme = createTheme();
-
 export default function Login() {
 	const [user, setUser] = React.useState({
 		email: '',
@@ -54,10 +52,10 @@ export default function Login() {
 
 			// const token = await res.json();
 
-			setToken && setToken(token.data.accesstoken);
-			localStorage.setItem('Login', 'true');
-			localStorage.setItem('token', token.data.accesstoken);
-			setIsLogged && setIsLogged(true);
+			// setToken && setToken(token.data.accesstoken);
+			if (token) localStorage.setItem('Login', 'true');
+			// if (token) localStorage.setItem('token', token.data.accesstoken);
+			if (token) setIsLogged && setIsLogged(true);
 
 			navigate('/');
 		} catch (err: any) {

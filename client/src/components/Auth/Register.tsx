@@ -18,40 +18,41 @@ const theme = createTheme();
 
 export default function Register() {
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: 0,
-  });
-  const [isChecked, setIsChecked] = useState(false);
+		name: '',
+		email: '',
+		password: '',
+		passwordConfirm: '',
+		role: 0,
+	});
+	const [isChecked, setIsChecked] = useState(false);
 
-  console.log(user);
+	console.log(user);
 
-  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
-  };
+	const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target;
+		setUser({ ...user, [name]: value });
+	};
 
-  const navigate = useNavigate();
-  const state = React.useContext(GlobalState);
-  const setIsLogged = state?.userAPI.setIsLogged;
+	const navigate = useNavigate();
+	const state = React.useContext(GlobalState);
+	const setIsLogged = state?.userAPI.setIsLogged;
 
-  const registerSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      await axios.post(
-        '/user/register',
-        { ...user },
-        { withCredentials: true }
-      );
-      localStorage.setItem('Login', 'true');
-      setIsLogged && setIsLogged(true);
-      navigate('/');
-    } catch (err: any) {
-      Swal.fire(err.response.data.msg);
-    }
-  };
-  return (
+	const registerSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		try {
+			await axios.post(
+				'/user/register',
+				{ ...user },
+				{ withCredentials: true },
+			);
+			localStorage.setItem('Login', 'true');
+			setIsLogged && setIsLogged(true);
+			navigate('/');
+		} catch (err: any) {
+			Swal.fire(err.response.data.msg);
+		}
+	};
+	return (
 		<div className='main'>
 			<Container
 				component='main'
@@ -111,6 +112,18 @@ export default function Register() {
 							value={user.password}
 							onChange={onChangeInput}
 						/>
+						{/* <TextField
+							margin='normal'
+							required
+							fullWidth
+							name='password-confirm'
+							label='Confirm Password'
+							type='password'
+							id='password-confirm'
+							autoComplete='current-password'
+							value={user.password}
+							onChange={onChangeInput}
+						/> */}
 						<Checkbox
 							value={user.role}
 							checked={isChecked}

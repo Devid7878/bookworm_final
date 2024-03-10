@@ -24,10 +24,8 @@ header nav .logo a {
   text-decoration: none;
   font-weight: 700;
 }
-header nav .logo a h1 {
-  text-decoration: none;
-  color: #23212a;
-  font-family: "Poppins", sans-serif;
+header nav .logo a img {
+  width: 7rem;
 }
 header nav .search-bar {
   background: white;

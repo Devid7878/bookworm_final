@@ -15,7 +15,7 @@ export type UserAPIType = {
 	setHistory: React.Dispatch<React.SetStateAction<[]>>;
 	infor: [];
 	setInfor: React.Dispatch<React.SetStateAction<[]>>;
-	cart: [{ price: number; quantity: number }];
+	cart: [];
 	setCart: React.Dispatch<React.SetStateAction<[]>>;
 	addCart: (p: ProductType) => Promise<any>;
 };

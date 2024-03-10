@@ -1,11 +1,14 @@
 import React from 'react';
 import './dist/Footer.css';
 import { Email, EmailRounded, Phone, PhoneRounded } from '@mui/icons-material';
+import Logo from '../Logo/Logo';
 function Footer() {
 	return (
 		<div className='footer'>
 			<div className='footer-part-1'>
-				<div className='logo'>LOGO</div>
+				<div className='logo'>
+					<Logo />
+				</div>
 				<div className='about-us'>
 					<h3>About us</h3>
 					<p>Want people to learn new things by reading our book.</p>

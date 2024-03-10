@@ -7,6 +7,7 @@ import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import Swal from 'sweetalert2';
 import './Header.css';
+import Logo from '../Logo/Logo';
 
 export default function Header() {
 	const state = useContext(GlobalState);
@@ -64,7 +65,7 @@ export default function Header() {
 						onClick={() => {
 							if (setCategory) setCategory('');
 						}}>
-						<h1>LOGO</h1>
+						<Logo />
 					</Link>
 				</div>
 				<div className='nav-links-container'>

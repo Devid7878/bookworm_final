@@ -7,6 +7,7 @@ import './Header.css';
 
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import Logo from '../Logo/Logo';
 
 export default function HeaderWithSearchBar() {
 	const state = useContext(GlobalState);
@@ -60,7 +61,7 @@ export default function HeaderWithSearchBar() {
 						onClick={() => {
 							if (setCategory) setCategory('');
 						}}>
-						<h1>LOGO</h1>
+						<Logo />
 					</Link>
 				</div>
 				<div className='search-bar'>

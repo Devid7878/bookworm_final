@@ -30,10 +30,14 @@ header {
         text-decoration: none;
         font-weight: 700;
 
-        h1 {
-          text-decoration: none;
-          color: $dark1;
-          font-family: 'Poppins', sans-serif;
+        // h1 {
+        //   text-decoration: none;
+        //   color: $dark1;
+        //   font-family: 'Poppins', sans-serif;
+        // }
+
+        img{
+          width: 7rem;
         }
       }
     }
