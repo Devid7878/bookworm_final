@@ -12,12 +12,8 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 function Cartt() {
 	const state = useContext(GlobalState);
 	const cart = state?.userAPI.cart;
-    console.log(cart);
 
-		const [total, setTotal] = useState(0);
-
-		const navigate = useNavigate();
-		console.log(cart);
+	const [total, setTotal] = useState(0);
 
 		useEffect(() => {
 			const totalCost = () => {

@@ -21,8 +21,8 @@ export default function Register() {
 		name: '',
 		email: '',
 		password: '',
-		passwordConfirm: '',
 		role: 0,
+		passwordConfirm: '',
 	});
 	const [isChecked, setIsChecked] = useState(false);
 
@@ -113,18 +113,18 @@ export default function Register() {
 							value={user.password}
 							onChange={onChangeInput}
 						/>
-						{/* <TextField
+						<TextField
 							margin='normal'
 							required
 							fullWidth
-							name='password-confirm'
+							name='passwordConfirm'
 							label='Confirm Password'
 							type='password'
 							id='password-confirm'
 							autoComplete='current-password'
-							value={user.password}
+							value={user.passwordConfirm}
 							onChange={onChangeInput}
-						/> */}
+						/>
 						<Checkbox
 							value={user.role}
 							checked={isChecked}

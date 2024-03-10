@@ -11,32 +11,23 @@ import Logo from '../Logo/Logo';
 
 export default function Header() {
 	const state = useContext(GlobalState);
+	const token = state?.token;
 	const isLogged = state?.userAPI.isLogged;
 	const setIsLogged = state?.userAPI.setIsLogged;
 	const isSeller = state?.userAPI.isSeller;
 	const isAdmin = state?.userAPI.isAdmin;
-	// const isAdmin  = state?.userAPI.isAdmin;
 	const cart = state?.userAPI.cart;
-	const search = state?.productsAPI.search;
-	const setSearch = state?.productsAPI.setSearch;
-	const infor = state?.userAPI.infor;
-	const category = state?.productsAPI.category;
-	const products = state?.productsAPI.products;
 	const setProducts = state?.productsAPI.setProducts;
 	const setCategory = state?.productsAPI.setCategory;
-
-	const [handleSearch, setHandleSearch] = useState('');
-	const [allProducts, setAllProducts] = useState<any>([]);
 
 	console.log('isAdmin: ', isAdmin, 'isSeller: ', isSeller);
 
 	useEffect(() => {
 		async function getProducts() {
-			setSearch && setSearch(handleSearch);
 			setProducts && setProducts((products) => products);
 		}
 		getProducts();
-	}, [handleSearch, setSearch, setProducts]);
+	}, [setProducts]);
 
 	const navigate = useNavigate();
 
@@ -53,9 +44,6 @@ export default function Header() {
 			navigate('/');
 		}
 	};
-
-	console.log('Admin: ', isAdmin, 'Seller: ', isSeller);
-
 	return (
 		<header>
 			<nav className='container'>

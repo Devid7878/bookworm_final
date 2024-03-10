@@ -20,13 +20,14 @@ export default function ProductItem({
 }) {
 	const state = useContext(GlobalState);
 	const addCart = state?.userAPI.addCart;
+
 	const isLogged = state?.userAPI.isLogged;
 
-	const logged = localStorage.getItem('Login');
+	// const logged = localStorage.getItem('Login');
 
 	const addToCart = () => {
-		if (logged) {
-			if (addCart && product) addCart(product);
+		if (isLogged) {
+			addCart && addCart(product);
 		} else {
 			Swal.fire('Fail', 'Please login to be able to shop', 'error');
 		}

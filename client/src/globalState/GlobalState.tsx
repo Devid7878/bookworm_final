@@ -1,33 +1,31 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
-import ProductsAPI, { ProductsAPIType } from './../API/productsAPI'; // Replace 'ProductsAPIType' with your actual type if available
+import ProductsAPI, { ProductsAPIType } from './../API/productsAPI';
 import axios from 'axios';
-import CategoriesAPI, { CategoriesAPIType } from './../API/categoriesAPI'; // Replace 'CategoriesAPIType' with your actual type if available
-import UserAPI, { UserAPIType } from './../API/userAPI'; // Replace 'UserAPIType' with your actual type if available
+import CategoriesAPI, { CategoriesAPIType } from './../API/categoriesAPI';
+import UserAPI, { UserAPIType } from './../API/userAPI';
 
 interface StatedData {
-  // token: [string, React.Dispatch<React.SetStateAction<string>>];
-  token: string;
-  setToken: React.Dispatch<React.SetStateAction<string>>;
-  productsAPI: ProductsAPIType; // Replace 'ProductsAPIType' with your actual type if available
-  categoriesAPI: CategoriesAPIType; // Replace 'CategoriesAPIType' with your actual type if available
-  userAPI: UserAPIType; // Replace 'UserAPIType' with your actual type if available
+	token: string;
+	setToken: React.Dispatch<React.SetStateAction<string>>;
+	productsAPI: ProductsAPIType;
+	categoriesAPI: CategoriesAPIType;
+	userAPI: UserAPIType;
 }
 
 export const GlobalState = createContext<StatedData | undefined>(undefined);
 
 interface DataProviderProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-  const [token, setToken] = useState('');
+	const [token, setToken] = useState('');
 
-  useEffect(() => {
-    const login = localStorage.getItem('Login');
-    if (login) {
-      const refreshToken = async () => {
-        try {
-					// THis will verify a token for authorized user by taking token from the cookie setted inside the browser headers
+	useEffect(() => {
+		const login = localStorage.getItem('Login');
+		if (login) {
+			const refreshToken = async () => {
+				try {
 					const response = await axios.get(
 						'http://localhost:5000/user/refresh_token',
 						{
@@ -38,22 +36,24 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 					console.log('REFRESHING THE REFRESH TOKEN...');
 					setToken(response.data.accesstoken);
 				} catch (error) {
-          console.error('Error refreshing token:', error);
-        }
-      };
-      refreshToken();
-    }
-  }, []);
+					console.error('Error refreshing token:', error);
+				}
+			};
+			refreshToken();
+		}
+	}, []);
 
-  const statedData: StatedData = {
-    token,
-    setToken: setToken,
-    productsAPI: ProductsAPI(),
-    categoriesAPI: CategoriesAPI(),
-    userAPI: UserAPI(token),
-  };
+	const statedData: StatedData = {
+		token,
+		setToken: setToken,
+		productsAPI: ProductsAPI(),
+		categoriesAPI: CategoriesAPI(),
+		userAPI: UserAPI(token),
+	};
 
-  return (
-    <GlobalState.Provider value={statedData}>{children}</GlobalState.Provider>
-  );
+	console.log('GLOBAL STATE RENDERED');
+
+	return (
+		<GlobalState.Provider value={statedData}>{children}</GlobalState.Provider>
+	);
 };

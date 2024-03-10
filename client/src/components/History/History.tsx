@@ -1,112 +1,81 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { GlobalState } from '../../globalState/GlobalState';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 import './History.css';
+import Header from '../Header/Header';
+import { GlobalState } from '../../globalState/GlobalState';
 
-export default function History() {
+type HistoryType = {
+	_id: string;
+	name: string;
+	email: string;
+	address: {
+		address_line1: string;
+		address_line2: string;
+	};
+	cart: {
+		title: string;
+		quantity: number;
+		price: number;
+		images: {
+			url: '';
+		};
+	}[];
+};
+
+function History() {
 	const state = useContext(GlobalState);
 	const history = state?.userAPI.history;
 	console.log(history);
 
 	return (
-		<div className='main'>
-			<div className='container'>
-				<div className='history__container'>
-					<h2 className='page__header'>History</h2>
-					<Grid item xs={12} md={12} lg={12}>
-						<Paper
-							sx={{
-								p: 2,
-								display: 'flex',
-								flexDirection: 'column',
-							}}>
-							<React.Fragment>
-								<Table size='medium'>
-									<TableHead>
-										<TableRow>
-											<TableCell className='history__item'>
-												Your Information
-											</TableCell>
-											<TableCell className='history__item'>
-												Shipping Address
-											</TableCell>
-											<TableCell className='history__item'>
-												Cart Content
-											</TableCell>
-											<TableCell className='history__item' align='right'>
-												Total
-											</TableCell>
-										</TableRow>
-									</TableHead>
-									<TableBody>
-										{history?.map(
-											(item: {
-												_id: string;
-												name: string;
-												email: string;
-												address: {
-													address_line1: string;
-													address_line2: string;
-												};
-												cart: [
-													{
-														title: string;
-														quantity: string;
-														price: number;
-													},
-												];
-											}) => (
-												<TableRow key={item._id}>
-													<TableCell className='history__item'>
-														<p>Name: {item.name}</p>
-														<p>Email: {item.email}</p>
-													</TableCell>
-													<TableCell className='history__item'>
-														<p>
-															{item.address.address_line1}-
-															{item.address.address_line2}
-														</p>
-													</TableCell>
-													<TableCell className='history__item'>
-														{item.cart.map((cartItem, index) => {
-															return (
-																<div
-																	key={index}
-																	className='flexrow text__transform'>
-																	<p>
-																		{cartItem.title} - {cartItem.quantity}
-																	</p>
-																</div>
-															);
-														})}
-													</TableCell>
-													<TableCell className='history__item' align='right'>
-														$
-														{item.cart.reduce(
-															(prev, cartItem) =>
-																prev +
-																parseInt(cartItem.quantity) * cartItem.price,
-															0,
-														)}
-													</TableCell>
-												</TableRow>
-											),
-										)}
-									</TableBody>
-								</Table>
-							</React.Fragment>
-						</Paper>
-					</Grid>
+		<div className='history-main-container'>
+			<Header />
+			<div className='table-container'>
+				<div className='history-table-header'>
+					<div>Ordered by</div>
+					<div>Shipping Address</div>
+					<div>Order</div>
+					<div>Total Amount</div>
+				</div>
+				<div className='history-table-main'>
+					{history?.map((h: HistoryType) => (
+						<>
+							<div>
+								<p>{h.name}</p>
+								<p>{h.email}</p>
+							</div>
+							<div>
+								<p>{h.address.address_line1}</p>
+								<p>{h.address.address_line2}</p>
+							</div>
+							<div>
+								<p>
+									{h.cart.map((c, i) => (
+										<div key={i} className='history-cart-item'>
+											<img src={c?.images?.url} alt='' />
+											<p>
+												{c.title}({c.quantity})
+											</p>
+										</div>
+									))}
+								</p>
+							</div>
+							<div>
+								<p>
+									$
+									{h.cart.reduce(
+										(prev, cartItem) =>
+											prev + cartItem.quantity * cartItem.price,
+										0,
+									)}
+								</p>
+							</div>
+						</>
+					))}
 				</div>
 			</div>
 		</div>
 	);
 }
+
+export default History;

@@ -16,7 +16,7 @@ function Home() {
 			title: string;
 			price: number;
 			category: string;
-			authors: string;
+			authors: string[];
 			checked: boolean;
 		}[]
 	>([]);
@@ -37,40 +37,44 @@ function Home() {
 		<>
 			<div className='home-container'>
 				<div className='slogan'>
-					<h1>“The Magic of Books: Unleash Your Imagination.”</h1>
+					<h1>“Books: Unleash Your Imagination.”</h1>
 				</div>
 				<div className='hero'>
-					<img src={Hero} alt='Hero Image' />
+					<img src={Hero} alt='Hero' />
 				</div>
 			</div>
-			{categories?.map((category, i) => (
-				<div style={{ margin: '1rem 0' }}>
-					<h1 style={{ textAlign: 'center' }}>
-						{category.name}
-						<hr />
-					</h1>
-					<div className='categories'>
-						{products.map((product) => {
-							return (
-								i < 5 &&
-								product.checked &&
-								product.category.toLowerCase() ===
-									category.name.toLowerCase() && (
-									<Link
-										to={`/product/${product._id}`}
-										className='categories-book'>
-										<img src={product.images.url} alt='category' />
-										<div className='categories-book-text'>
-											<h1>{product.title}</h1>
-											<h5>${product.price}</h5>
-										</div>
-									</Link>
-								)
-							);
-						})}
-					</div>
-				</div>
-			))}
+			{categories?.map(
+				(category, i) =>
+					i < 3 && (
+						<div key={i}>
+							<h1>{category.name}</h1>
+							<div className='categories'>
+								{products.map((product, idx) => {
+									return (
+										product.checked &&
+										product.category.toLowerCase() ===
+											category.name.toLowerCase() && (
+											<div className='product'>
+												<Link
+													to={`/product/${product._id}`}
+													className='categories-book'>
+													<img src={product.images.url} alt='category' />
+													<div className='categories-book-text'>
+														<h1>{product.title}</h1>
+														{product.authors.map(
+															(a, i) => i < 1 && <p key={i}>by {a}</p>,
+														)}
+														<h5>${product.price}</h5>
+													</div>
+												</Link>
+											</div>
+										)
+									);
+								})}
+							</div>
+						</div>
+					),
+			)}
 			<Footer />
 		</>
 	);

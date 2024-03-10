@@ -50,10 +50,10 @@ export default function Login() {
 				},
 			);
 
-			// setToken && setToken(token.data.accesstoken);
 			token && localStorage.setItem('Login', 'true');
 			token && localStorage.setItem('token', token.data.accesstoken);
 			token && setIsLogged && setIsLogged(true);
+			token && setToken && setToken(token.data.accesstoken);
 			token && navigate('/');
 		} catch (err: any) {
 			const options: SweetAlertOptions = {

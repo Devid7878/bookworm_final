@@ -21,6 +21,7 @@ function Checkout() {
 	const cart = state?.userAPI.cart;
 	const setCart = state?.userAPI.setCart;
 	const callback = state?.userAPI.callback;
+	const emptyDBCart = state?.userAPI.emptyDBCart;
 	const setCallback = state?.userAPI.setCallback;
 
 	const navigate = useNavigate();
@@ -36,11 +37,13 @@ function Checkout() {
 				headers: { Authorization: token },
 			},
 		);
-		console.log(res);
+
 		setCart && setCart([]);
 		Swal.fire('Success!', 'Thank you for purchase!', 'success');
-		navigate('/');
 		setCallback && setCallback(!callback);
+		emptyDBCart && emptyDBCart();
+
+		navigate('/');
 	};
 
 	return (

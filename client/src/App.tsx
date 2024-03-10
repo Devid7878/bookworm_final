@@ -15,7 +15,6 @@ import Home from './components/Home/Home';
 import AllUsers from './components/Admin/AllUsers';
 import Cartt from './components/Cart/Cartt';
 import Checkout from './components/Checkout/Checkout';
-import Historyy from './components/History/Historyy';
 
 function App() {
 	const state = useContext(GlobalState);
@@ -48,7 +47,7 @@ function App() {
 						<Route path='/product/:id' element={<ProductDetail />} />
 						<Route path='/register' element={!isLogged && <Register />} />
 						<Route path='/login' element={!isLogged && <Login />} />
-						<Route path='/history' element={<Historyy />} />
+						<Route path='/history' element={<History />} />
 						<Route path='/cart' element={<Cartt />} />
 						<Route path='/checkout' element={<Checkout />} />
 						<Route path='/seller' element={<Seller />} />

@@ -23,7 +23,6 @@ export default function ProductDetail() {
 		content: '',
 		authors: [''],
 	});
-	// const [productDetail, setProductDetail] = useState([])
 	const params = useParams();
 
 	useEffect(() => {
@@ -45,6 +44,7 @@ export default function ProductDetail() {
 	};
 
 	if (Object.keys(productDetail).length === 0) return null;
+	
 	return (
 		<div className='main'>
 			<Header />

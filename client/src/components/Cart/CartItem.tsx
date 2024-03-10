@@ -99,21 +99,6 @@ function CartItem() {
 		}
 	};
 
-	const tranSuccess = async (payment: { address: string }) => {
-		const { address } = payment;
-		const res = await axios.post(
-			`http://localhost:5000/api/payment`,
-			{ cart, address },
-			{
-				headers: { Authorization: token },
-			},
-		);
-		setCart && setCart([]);
-		addToCart([]);
-		Swal.fire('Success!', 'Thank you for purchase!', 'success');
-		setCallback && setCallback(!callback);
-	};
-
 	return (
 		<div className='cart-item'>
 			<div className='item-container'>
@@ -136,7 +121,9 @@ function CartItem() {
 								<p>{item?.title.substring(0, 15)}...</p>
 							</div>
 							<div className='item-authors'>
-								{item?.authors.map((author, i) => i < 1 && <p>by {author}</p>)}
+								{item?.authors.map(
+									(author, i) => i < 1 && <p key={i}>by {author}</p>,
+								)}
 							</div>
 							<div className='item-category'>
 								<p>{item?.category}</p>

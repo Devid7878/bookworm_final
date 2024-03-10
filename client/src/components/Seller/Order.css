@@ -1,0 +1,22 @@
+.order-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: flex-start;
+  align-items: center;
+}
+.order-container div {
+  padding: 0.5rem 1rem;
+}
+.order-container .flexrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+.order-container .flexrow img {
+  width: 3rem;
+}
+.order-container .flexrow p {
+  font-size: 12px;
+  font-weight: 400;
+}/*# sourceMappingURL=Order.css.map */

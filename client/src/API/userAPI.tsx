@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { GlobalState } from '../globalState/GlobalState';
 
 export type UserAPIType = {
 	isLogged: boolean;
@@ -18,7 +17,10 @@ export type UserAPIType = {
 	setInfor: React.Dispatch<React.SetStateAction<[]>>;
 	cart: [];
 	setCart: React.Dispatch<React.SetStateAction<[]>>;
+
 	addCart: (p: ProductType) => Promise<any>;
+	emptyDBCart: () => Promise<any>;
+	updateHistory: (s: string) => Promise<any>;
 };
 
 type ProductType = {
@@ -34,9 +36,6 @@ export default function UserAPI(token: string) {
 	const [callback, setCallback] = useState(false);
 	const [infor, setInfor] = useState<any>([]);
 
-	// const loggedIn = localStorage.getItem('Login');
-
-	// const token = localStorage.getItem('token');
 	useEffect(() => {
 		if (token) {
 			const getUser = async () => {
@@ -46,6 +45,8 @@ export default function UserAPI(token: string) {
 					});
 
 					// response.data.role === 1 ? setIsSeller(true) : setIsSeller(false);
+
+					console.log(response.data.role);
 
 					if (response.data.role === 1) {
 						setIsSeller(true);
@@ -96,12 +97,9 @@ export default function UserAPI(token: string) {
 			};
 			getHistory();
 		}
-	}, [token, isSeller, isAdmin]);
+	}, [token, isSeller]);
 
 	const addCart = async (product: ProductType) => {
-		// if (!isLogged) {
-		//   Swal.fire('Fail!', 'Please login to be able to shop', 'error');
-		// }
 		if (!isLogged) {
 			Swal.fire('Fail!', 'Please login to be able to shop', 'error');
 		}
@@ -131,6 +129,39 @@ export default function UserAPI(token: string) {
 		}
 	};
 
+	const emptyDBCart = async () => {
+		if (isLogged) {
+			console.log(token);
+			await axios.patch(
+				`http://localhost:5000/user/emptyCart`,
+				{},
+				{
+					headers: {
+						Authorization: token,
+						withCredentials: true,
+					},
+				},
+			);
+
+			console.log('CART OF DB IS EMPTIED');
+		}
+	};
+
+	const updateHistory = async (status: string) => {
+		if (isLogged) {
+			await axios.patch(
+				`http://localhost:5000/user/history`,
+				{ status },
+				{
+					headers: {
+						Authorization: token,
+						withCredentials: true,
+					},
+				},
+			);
+		}
+	};
+
 	return {
 		addCart,
 		isLogged,
@@ -147,6 +178,9 @@ export default function UserAPI(token: string) {
 		setInfor,
 		cart,
 		setCart,
+		emptyDBCart,
+		updateHistory,
+
 		// isSeller: [isSeller, setIsSeller],
 		// callback: [callback, setCallback],
 		// history: [history, setHistory],

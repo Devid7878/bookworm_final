@@ -1,0 +1,26 @@
+.order-container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: flex-start;
+    align-items: center;
+
+    div{
+        padding: 0.5rem 1rem;
+    }
+
+    .flexrow{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+
+        img{
+            width: 3rem;
+        }
+
+        p{
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+}
