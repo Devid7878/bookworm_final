@@ -7,7 +7,12 @@
 }
 .home-container h1 {
   overflow: hidden;
-  font-size: 3rem;
+  font-size: 5rem;
+  font-family: "Poppins", sans-serif;
+}
+.home-container h1 span {
+  color: #ff8551;
+  font-family: "Poppins", sans-serif;
 }
 .home-container .hero img {
   width: 700px;
@@ -15,34 +20,49 @@
   object-fit: cover;
 }
 
+.category-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #26252b;
+}
+
 .categories {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
   max-width: 80%;
   margin: 2rem auto;
+  margin-bottom: 5rem;
 }
 .categories a {
   text-decoration: none;
+}
+.categories .product {
+  flex: 1;
 }
 .categories .categories-book {
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  padding: 0 1.5rem;
-  height: 10rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 1.5rem;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.185) 0px 5px 10px;
   transition: all 0.2s ease-in-out;
   border-radius: 5px;
 }
 .categories .categories-book:hover {
   transform: scale(1.03);
 }
+.categories .categories-book .img-container {
+  height: 180px;
+}
 .categories .categories-book img {
-  height: 80%;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 .categories .categories-book .categories-book-text {

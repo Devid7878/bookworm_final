@@ -5,138 +5,138 @@ $black: black;
 $white: white;
 
 .container {
-	.products__top {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
+  .products__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 
-		h3 {
-			text-align: start;
-		}
+    h3 {
+      text-align: start;
+    }
 
-		.left {
-			max-width: 14vw;
-			overflow: hidden;
-		}
+    .left {
+      max-width: 14vw;
+      overflow: hidden;
+    }
 
-		.filter-by-category {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: space-between;
-			transition: all 0.5s ease-in-out;
+    .filter-by-category {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      transition: all 0.5s ease-in-out;
 
-			.category-heading {
-				display: flex;
-				justify-content: center;
-			}
+      .category-heading {
+        display: flex;
+        justify-content: center;
+      }
 
-			.filter-by-category-modal {
-				background: $dark1;
-				color: $light1;
-				width: 20vw;
+      .filter-by-category-modal {
+        background: $dark1;
+        color: $light1;
+        width: 15vw;
 
-				.categories {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: flex-start;
-					gap: 1rem;
-				}
-
-				.categories-checking {
-					display: flex;
-					gap: 0.5rem;
-					align-items: center;
-
-					input[type='checkbox'] {
-						width: 1rem;
-						height: 1rem;
-						background-color: #23212a;
-					}
-				}
-			}
-		}
-		.filter-by-book-condition {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: center;
-			width: 20vw;
-			transition: all 0.5s ease-in-out;
-
-			.category-heading {
-				display: flex;
-				justify-content: center;
-			}
-
-			.filter-by-category-modal {
-				background: $dark1;
-				width: 20vw;
-				color: $light1;
-
-				.categories {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: flex-start;
-					gap: 1rem;
-				}
-
-				.categories-checking {
-					display: flex;
-					gap: 0.5rem;
-					align-items: center;
-
-					input[type='checkbox'] {
-						width: 1rem;
-						height: 1rem;
-						background-color: #23212a;
-					}
-				}
-			}
-		}
-
-		.sort-books {
-			select {
-				border: 1px solid $dark1;
-				color: $light1;
-				padding: 0.5rem 1rem;
-				background: $dark1;
-				text-decoration: none;
-				border-radius: 0.5rem;
-				margin-top: 0.5rem;
-			}
-		}
-
-		// .products__container{
-		//     display: grid;
-		//     grid-template-columns: repeat(1, 1fr);
-		// }
-
-        .products__container{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-
-            gap: 3rem
+        .categories {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1rem;
         }
-		.product__home--container {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 1rem;
 
-		}
-        .button__seemore {
-            button {cursor: pointer;
-                border: 1px solid $dark1;
-                color: $dark1;
-                padding: 0.5rem 1rem;
-                background: $light1;
-                text-decoration: none;
-                border-radius: 0.5rem;
-            }
+        .categories-checking {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+
+          input[type='checkbox'] {
+            width: 1rem;
+            height: 1rem;
+            background-color: #23212a;
+          }
         }
-	}
+      }
+    }
+    .filter-by-book-condition {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 20vw;
+      transition: all 0.5s ease-in-out;
+
+      .category-heading {
+        display: flex;
+        justify-content: center;
+      }
+
+      .filter-by-category-modal {
+        background: $dark1;
+        width: 20vw;
+        color: $light1;
+
+        .categories {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .categories-checking {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+
+          input[type='checkbox'] {
+            width: 1rem;
+            height: 1rem;
+            background-color: #23212a;
+          }
+        }
+      }
+    }
+
+    .sort-books {
+      select {
+        border: 1px solid $dark1;
+        color: $light1;
+        padding: 0.5rem 1rem;
+        background: $dark1;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    // .products__container{
+    //     display: grid;
+    //     grid-template-columns: repeat(1, 1fr);
+    // }
+
+    .products__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 3rem;
+    }
+    .product__home--container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .button__seemore {
+      button {
+        cursor: pointer;
+        border: 1px solid $dark1;
+        color: $dark1;
+        padding: 0.5rem 1rem;
+        background: $light1;
+        text-decoration: none;
+        border-radius: 0.5rem;
+      }
+    }
+  }
 }

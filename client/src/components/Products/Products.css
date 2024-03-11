@@ -7,8 +7,6 @@
   text-align: start;
 }
 .container .products__top .left {
-  max-width: 14vw;
-  overflow: hidden;
 }
 .container .products__top .filter-by-category {
   display: flex;
@@ -16,6 +14,7 @@
   align-items: flex-start;
   justify-content: space-between;
   transition: all 0.5s ease-in-out;
+  width: 11vw;
 }
 .container .products__top .filter-by-category .category-heading {
   display: flex;
@@ -24,21 +23,34 @@
 .container .products__top .filter-by-category .filter-by-category-modal {
   background: #23212a;
   color: #fef9f7;
-  width: 20vw;
+  width: 10vw;
 }
-.container .products__top .filter-by-category .filter-by-category-modal .categories {
+.container
+  .products__top
+  .filter-by-category
+  .filter-by-category-modal
+  .categories {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 }
-.container .products__top .filter-by-category .filter-by-category-modal .categories-checking {
+.container
+  .products__top
+  .filter-by-category
+  .filter-by-category-modal
+  .categories-checking {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
-.container .products__top .filter-by-category .filter-by-category-modal .categories-checking input[type=checkbox] {
+.container
+  .products__top
+  .filter-by-category
+  .filter-by-category-modal
+  .categories-checking
+  input[type='checkbox'] {
   width: 1rem;
   height: 1rem;
   background-color: #23212a;
@@ -60,19 +72,32 @@
   width: 20vw;
   color: #fef9f7;
 }
-.container .products__top .filter-by-book-condition .filter-by-category-modal .categories {
+.container
+  .products__top
+  .filter-by-book-condition
+  .filter-by-category-modal
+  .categories {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
 }
-.container .products__top .filter-by-book-condition .filter-by-category-modal .categories-checking {
+.container
+  .products__top
+  .filter-by-book-condition
+  .filter-by-category-modal
+  .categories-checking {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
-.container .products__top .filter-by-book-condition .filter-by-category-modal .categories-checking input[type=checkbox] {
+.container
+  .products__top
+  .filter-by-book-condition
+  .filter-by-category-modal
+  .categories-checking
+  input[type='checkbox'] {
   width: 1rem;
   height: 1rem;
   background-color: #23212a;
@@ -106,4 +131,4 @@
   background: #fef9f7;
   text-decoration: none;
   border-radius: 0.5rem;
-}/*# sourceMappingURL=Products.css.map */
+} /*# sourceMappingURL=Products.css.map */

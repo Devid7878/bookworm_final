@@ -24,7 +24,7 @@
 .container .products__top .filter-by-category .filter-by-category-modal {
   background: #23212a;
   color: #fef9f7;
-  width: 20vw;
+  width: 15vw;
 }
 .container .products__top .filter-by-category .filter-by-category-modal .categories {
   display: flex;

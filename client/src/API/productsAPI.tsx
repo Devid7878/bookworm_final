@@ -40,25 +40,25 @@ export default function ProductsAPI() {
   const [callback, setCallback] = useState(false);
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('checked');
-	const [search, setSearch] = useState('');
-	const [page, setPage] = useState(1);
-	const [result, setResult] = useState(0);
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const [result, setResult] = useState(0);
 
-	useEffect(() => {
-		const getProducts = async () => {
-			// let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
-			// 	page * 6
-			// }&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
+  useEffect(() => {
+    const getProducts = async () => {
+      // let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
+      // 	page * 6
+      // }&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
-			let link = `http://localhost:5000/api/products?&sort=${sort}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
+      let link = `http://localhost:5000/api/products?&sort=${sort}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
-			console.log(link);
-			const response = await axios.get(link);
-			setProducts(response.data.products);
-			setResult(response.data.result);
-		};
-		getProducts();
-	}, [category, page, sort, search, callback]);
+      console.log(link);
+      const response = await axios.get(link);
+      setProducts(response.data.products);
+      setResult(response.data.result);
+    };
+    getProducts();
+  }, [category, page, sort, search, callback]);
 
   return {
     products,
