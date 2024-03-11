@@ -5,8 +5,28 @@
   align-items: center;
   justify-content: center;
 }
+.create-product-main-container h2 {
+  padding-bottom: 4rem;
+}
 .create-product-main-container .create-product-table-body {
   padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  margin: 0.5rem 1rem;
+}
+.create-product-main-container .create-product-table-body div button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: black;
+  color: white;
+  min-width: 5rem;
+}
+.create-product-main-container .create-product-table-body div .delete-btn-category {
+  background-color: tomato;
+}
+
+h2 {
+  padding-top: 3rem;
 }
 
 .seller-products-main-container {
@@ -16,8 +36,63 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5rem;
+  padding: 0 5rem;
 }
 .seller-products-main-container .creating-a-new-product .upload__file--container {
-  border: 2px solid black;
+  padding: 5rem;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+.seller-products-main-container .creating-a-new-product .update__content form {
+  padding: 5rem;
+}
+.seller-products-main-container .creating-a-new-product .update__content form .form-group {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem;
+}
+.seller-products-main-container .creating-a-new-product .update__content form .form-group label {
+  font-size: 18px;
+  font-weight: 400;
+}
+.seller-products-main-container .creating-a-new-product .update__content form .form-group input {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: rgb(235, 235, 235);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.seller-products-main-container .creating-a-new-product .update__content form .form-group select {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px 4px;
+}
+.seller-products-main-container .creating-a-new-product .update__content form button {
+  padding: 1rem 1rem;
+  width: 100%;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+}
+.seller-products-main-container .creating-a-new-product .update__content form button:hover {
+  transform: scale(1.02);
+}
+.seller-products-main-container .stats-bottom-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+}
+.seller-products-main-container .stats-bottom-container .stats-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 18px;
+  font-weight: 800;
 }

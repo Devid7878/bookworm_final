@@ -287,31 +287,27 @@ export default function SellerProductsList() {
               />
             </div>
 
-            <select
-              name="category"
-              className="form-control create__product--input"
-              value={product.category}
-              onChange={handleChangeInput}
-            >
-              <option value="">Choose Category...</option>
-              {categories?.map((item) => {
-                return (
-                  <option value={item.name} key={item._id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </select>
-            <div>
-              <Button
-                className="create__product--btn"
-                variant="contained"
-                color="primary"
-                type="submit"
+            <div className="form-group">
+              <label htmlFor="category">Choose Category</label>
+              <select
+                name="category"
+                className="form-control create__product--input"
+                value={product.category}
+                onChange={handleChangeInput}
               >
-                {onEdit ? 'Update Product' : 'Create Product'}
-              </Button>
+                <option value="">Choose Category...</option>
+                {categories?.map((item) => {
+                  return (
+                    <option value={item.name} key={item._id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
+            <button className="create__product--btn" type="submit">
+              {onEdit ? 'Update Product' : 'Create Product'}
+            </button>
           </form>
         </div>
       </div>
@@ -343,36 +339,30 @@ export default function SellerProductsList() {
               <div>{item.category}</div>
               <div>
                 <Link to={`/seller/${item._id}`}>
-                  <Button
-                    className="admin__btn"
-                    variant="contained"
-                    color="primary"
-                  >
-                    Edit
-                  </Button>
+                  <button className="admin__btn">Edit</button>
                 </Link>
                 &nbsp;
-                <Button
-                  className="admin__btn"
-                  variant="contained"
-                  color="primary"
+                <button
+                  className="delete-btn-category"
                   onClick={() => deleteProduct(item._id, item.images.public_id)}
                 >
                   Delete
-                </Button>
+                </button>
               </div>
             </div>
           ))}
         </div>
       </>
 
-      <div>
-        <h4>Quantity Products</h4>
-        <p>{products?.length}</p>
-      </div>
-      <div>
-        <h4>Quantity Sold</h4>
-        <p>{products?.reduce((prev, item) => prev + item.sold, 0)}</p>
+      <div className="stats-bottom-container">
+        <div className="stats-bottom">
+          <h4>Quantity Products</h4>
+          <p>{products?.length}</p>
+        </div>
+        <div className="stats-bottom">
+          <h4>Quantity Sold</h4>
+          <p>{products?.reduce((prev, item) => prev + item.sold, 0)}</p>
+        </div>
       </div>
     </div>
   );
