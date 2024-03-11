@@ -113,4 +113,9 @@ header nav .nav-links-container .profile img {
 }
 header nav .nav-links-container .user-info-modal {
   font-weight: 900;
+}
+@media (max-width: 1000px) {
+  header nav .nav-links-container {
+    display: none;
+  }
 }/*# sourceMappingURL=Header.css.map */

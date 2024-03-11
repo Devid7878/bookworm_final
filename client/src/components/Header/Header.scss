@@ -19,6 +19,7 @@ header {
 
   nav {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
@@ -135,6 +136,12 @@ header {
       }
       .user-info-modal {
         font-weight: 900;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .nav-links-container {
+        display: none;
       }
     }
   }

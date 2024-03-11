@@ -76,3 +76,11 @@
   border-radius: 0.5rem;
   width: 50%;
 }
+@media (max-width: 1000px) {
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}

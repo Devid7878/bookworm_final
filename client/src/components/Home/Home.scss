@@ -7,6 +7,7 @@ $white: white;
 
 .home-container {
   display: flex;
+
   justify-content: center;
   align-items: center;
   max-width: 80%;
@@ -29,6 +30,22 @@ $white: white;
       object-fit: cover;
     }
   }
+  @media (max-width: 1350px) {
+    flex-wrap: wrap-reverse;
+    margin-bottom: 5rem;
+    .hero {
+      img {
+        width: 100%;
+        height: unset;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 10vw;
+    }
+  }
 }
 .category-title {
   font-size: 2rem;
@@ -40,6 +57,7 @@ $white: white;
   // display: grid;
   // grid-template-columns: repeat(4, 1fr);
   display: flex;
+  flex-wrap: wrap;
 
   gap: 1rem;
   justify-content: space-between;
@@ -58,6 +76,7 @@ $white: white;
 
   .categories-book {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     gap: 1rem;
@@ -72,12 +91,13 @@ $white: white;
 
     .img-container {
       height: 180px;
+      background: transparent;
     }
 
     img {
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
       box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
         rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     }

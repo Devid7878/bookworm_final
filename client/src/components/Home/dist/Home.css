@@ -19,6 +19,21 @@
   height: 700px;
   object-fit: cover;
 }
+@media (max-width: 1350px) {
+  .home-container {
+    flex-wrap: wrap-reverse;
+    margin-bottom: 5rem;
+  }
+  .home-container .hero img {
+    width: 100%;
+    height: unset;
+  }
+}
+@media (max-width: 768px) {
+  .home-container h1 {
+    font-size: 10vw;
+  }
+}
 
 .category-title {
   font-size: 2rem;
@@ -29,6 +44,7 @@
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
@@ -44,6 +60,7 @@
 }
 .categories .categories-book {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
@@ -58,11 +75,12 @@
 }
 .categories .categories-book .img-container {
   height: 180px;
+  background: transparent;
 }
 .categories .categories-book img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 .categories .categories-book .categories-book-text {
