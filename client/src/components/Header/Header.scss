@@ -36,7 +36,7 @@ header {
         //   font-family: 'Poppins', sans-serif;
         // }
 
-        img{
+        img {
           width: 7rem;
         }
       }
@@ -70,17 +70,21 @@ header {
         list-style: none;
         gap: 3rem;
 
-        .shopping-cart{
-          span{
-            background: $accent;
+        .shopping-cart {
+          span {
+            background: $dark1;
             width: 1.2rem;
             height: 1.2rem;
             border-radius: 50%;
             font-size: 0.7rem;
             text-align: center;
             position: relative;
-            top:-15px;
-            left:-12px;
+            top: -15px;
+            left: -12px;
+            color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
 
@@ -97,7 +101,6 @@ header {
           &:hover {
             transform: scale(1.3);
           }
-
         }
 
         .button {
@@ -129,6 +132,9 @@ header {
           height: 100%;
           object-fit: cover;
         }
+      }
+      .user-info-modal {
+        font-weight: 900;
       }
     }
   }

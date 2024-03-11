@@ -15,15 +15,17 @@
   min-width: 48%;
   padding: 2rem;
   margin: 3rem 0;
-}
-.seller-sold-stats .stats {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.seller-sold-stats p {
-  font-size: 25px;
-  font-weight: 900;
+
+  .stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  p {
+    font-size: 25px;
+    font-weight: 900;
+  }
 }
 
 .category-container,
@@ -31,4 +33,4 @@
   background-color: white;
   padding: 3rem 1rem;
   margin: 2rem 0;
-}/*# sourceMappingURL=Seller.css.map */
+}

@@ -8,9 +8,7 @@ import React, {
 } from 'react';
 import { GlobalState } from './../../globalState/GlobalState';
 import ProductItem from './ProductItem';
-import { Button } from '@mui/material';
 import Loading from './../Support/Loading';
-import Header from '../Header/Header';
 import HeaderWithSearchBar from '../Header/HeaderWithSearchBar';
 import { ArrowDropDownRounded, ArrowDropUpRounded } from '@mui/icons-material';
 import './Products.css';
@@ -21,55 +19,34 @@ export default function Products() {
   const categories = state?.categoriesAPI.categories;
   const products = state?.productsAPI.products;
   const setProducts = state?.productsAPI.setProducts;
+  const setSelectedCategories = state?.productsAPI.setSelectedCategories;
+  const selectedCategories = state?.productsAPI.selectedCategories;
 
-  const result = state?.productsAPI.result;
-  const page = state?.productsAPI.page;
   const setSort = state?.productsAPI.setSort;
-  const setPage = state?.productsAPI.setPage;
 
   const [sortBy, setSortBy] = useState('');
   const [isDownArr, setIsDownArr] = useState(false);
-  const [selectedCategories, setSelectedCategories] = useState(['']);
 
   const handleCategoryFilter = async (
     e: MouseEvent<HTMLInputElement>,
     category: string
   ) => {
-    console.log(e.currentTarget.checked, category);
-    setSelectedCategories((prevCategories) => {
-      if (prevCategories.includes(category)) {
-        // Category is already selected, remove it
-        return prevCategories.filter((c) => c !== category);
-      } else {
-        // Category is not selected, add it
-        return [...prevCategories, category];
-      }
-    });
+    setSelectedCategories &&
+      setSelectedCategories((prevCategories) => {
+        if (prevCategories.includes(category)) {
+          // Category is already selected, remove it
+          return prevCategories.filter((c) => c !== category);
+        } else {
+          // Category is not selected, add it
+          return [...prevCategories, category];
+        }
+      });
   };
 
-  let apiURl;
   useEffect(() => {
-    const filterByCategories = async () => {
-      const categoryParam = selectedCategories.length
-        ? `category=${selectedCategories.join('&category=')}`
-        : '';
-
-      if (selectedCategories.length > 0) {
-        apiURl = `http://localhost:5000/api/products?${categoryParam}`;
-        const response = await axios.get(apiURl);
-        console.log(response.data.products);
-        setProducts && setProducts(response.data.products);
-      }
-
-      if (selectedCategories.length <= 0) {
-        apiURl = `http://localhost:5000/api/products`;
-        const response = await axios.get(apiURl);
-        console.log(response.data.products);
-        setProducts && setProducts(response.data.products);
-      }
-    };
-
-    filterByCategories();
+    setSelectedCategories &&
+      selectedCategories &&
+      setSelectedCategories(selectedCategories);
   }, [selectedCategories]);
 
   return (
@@ -104,9 +81,9 @@ export default function Products() {
                         <div className="categories-checking" key={i}>
                           <input
                             type="checkbox"
-                            onClick={(event) =>
-                              handleCategoryFilter(event, category?.name)
-                            }
+                            onClick={(event) => {
+                              handleCategoryFilter(event, category?.name);
+                            }}
                           />
                           <p>{category.name}</p>
                         </div>

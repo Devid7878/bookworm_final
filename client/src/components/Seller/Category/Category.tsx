@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+
 import { GlobalState } from './../../../globalState/GlobalState';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import './Category.css';
+import Header from '../../Header/Header';
 
 export default function Category() {
   const state = React.useContext(GlobalState);
@@ -107,20 +107,20 @@ export default function Category() {
 
   return (
     <div className="order__item">
-      <div className="mb-3">
+      <div className="create-category">
         <label htmlFor="exampleFormControlInput1" className="form-label">
-          Category: &nbsp;&nbsp;&nbsp;&nbsp;
+          <span>Create Category: </span>
+          <input
+            type="text"
+            name="category"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Enter your category..."
+            style={{ fontSize: '20px' }}
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
         </label>
-        <input
-          type="text"
-          name="category"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Enter your category..."
-          style={{ fontSize: '20px' }}
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
         <button
           type="submit"
           className="create__category--btn"
@@ -130,52 +130,38 @@ export default function Category() {
           {edit ? 'UPDATE' : 'CREATE'}
         </button>
       </div>
-      <div>
-        <React.Fragment>
-          <h2>Categories Table</h2>
-          <Table size="medium">
-            <TableHead>
-              <TableRow>
-                <TableCell className="order__item">Name</TableCell>
-                <TableCell className="order__item">Create At</TableCell>
-                <TableCell className="order__item">Update At</TableCell>
-                <TableCell className="order__item">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {categories?.map((item) => (
-                <TableRow key={item._id}>
-                  <TableCell className="order__item">{item.name}</TableCell>
-                  <TableCell className="order__item">
-                    {item.createdAt}
-                  </TableCell>
-                  <TableCell className="order__item">
-                    {item.updatedAt}
-                  </TableCell>
-                  <TableCell className="order__item flexrow">
-                    <Button
-                      className="admin__btn"
-                      variant="contained"
-                      color="primary"
-                      onClick={() => editCategory(item._id, item.name)}
-                    >
-                      Edit
-                    </Button>
-                    &nbsp;
-                    <Button
-                      className="admin__btn"
-                      variant="contained"
-                      color="primary"
-                      onClick={() => deleteCategory(item._id)}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </React.Fragment>
+      <div className="categories-table">
+        <h2>Categories Table</h2>
+        <div className="category-table">
+          <div className="category-table-header">
+            <div className="order__item">Name</div>
+            <div className="order__item">Create At</div>
+            <div className="order__item">Update At</div>
+            <div className="order__item">Action</div>
+          </div>
+          {categories?.map((item) => (
+            <div key={item._id} className="category-table-body">
+              <div className="order__item">{item.name}</div>
+              <div className="order__item">{item.createdAt}</div>
+              <div className="order__item">{item.updatedAt}</div>
+              <div className="order__item flexrow">
+                <button
+                  className="edit-btn-category"
+                  onClick={() => editCategory(item._id, item.name)}
+                >
+                  Edit
+                </button>
+                &nbsp;
+                <button
+                  className="delete-btn-category"
+                  onClick={() => deleteCategory(item._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

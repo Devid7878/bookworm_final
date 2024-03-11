@@ -1,0 +1,64 @@
+.form-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  span {
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  input {
+    background: rgb(226, 226, 226);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(192, 186, 197, 0.3) 0px 7px 10px 0px;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.create-category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem;
+
+  .create__category--btn {
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: white;
+  }
+}
+
+.categories-table {
+  margin-top: 5rem;
+}
+.category-table {
+  margin-top: 1rem;
+}
+.category-table-header,
+.category-table-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+
+  button {
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: white;
+    min-width: 5rem;
+  }
+
+  .delete-btn-category {
+    background-color: tomato;
+  }
+}

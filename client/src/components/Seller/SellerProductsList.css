@@ -1,0 +1,23 @@
+.create-product-main-container .create-product-table-header,
+.create-product-main-container .create-product-table-body {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  justify-content: center;
+}
+.create-product-main-container .create-product-table-body {
+  padding: 1rem;
+}
+
+.seller-products-main-container {
+  background-color: white;
+}
+.seller-products-main-container .creating-a-new-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem;
+}
+.seller-products-main-container .creating-a-new-product .upload__file--container {
+  border: 2px solid black;
+}/*# sourceMappingURL=SellerProductsList.css.map */

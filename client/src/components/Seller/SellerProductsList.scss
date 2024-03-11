@@ -1,0 +1,28 @@
+.create-product-main-container {
+  .create-product-table-header,
+  .create-product-table-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .create-product-table-body {
+    padding: 1rem;
+  }
+}
+
+.seller-products-main-container {
+  background-color: white;
+
+  .creating-a-new-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+
+    .upload__file--container {
+      border: 2px solid black;
+    }
+  }
+}

@@ -27,6 +27,8 @@ export type ProductsAPIType = {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
+  selectedCategories: string[];
+  setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
   sort: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
   search: string;
@@ -43,14 +45,20 @@ export default function ProductsAPI() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const [result, setResult] = useState(0);
+  const [selectedCategories, setSelectedCategories] = useState(['']);
 
   useEffect(() => {
+    console.log('PRODUCTS API EFFECT');
     const getProducts = async () => {
       // let link = `http://localhost:5000/api/products?&sort=${sort}&limit=${
       // 	page * 6
       // }&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
-      let link = `http://localhost:5000/api/products?&sort=${sort}&${category}&titleLowerCase[regex]=${search.toLowerCase()}`;
+      const categoryParam = selectedCategories.length
+        ? `${selectedCategories.join('&category=')}`
+        : '';
+
+      let link = `http://localhost:5000/api/products?&sort=${sort}&${categoryParam}&titleLowerCase[regex]=${search.toLowerCase()}`;
 
       console.log(link);
       const response = await axios.get(link);
@@ -58,7 +66,7 @@ export default function ProductsAPI() {
       setResult(response.data.result);
     };
     getProducts();
-  }, [category, page, sort, search, callback]);
+  }, [category, page, sort, search, callback, selectedCategories]);
 
   return {
     products,
@@ -75,12 +83,7 @@ export default function ProductsAPI() {
     setPage,
     result,
     setResult,
-    // products: [products, setProducts],
-    // search: [search, setSearch],
-    // category: [category, setCategory],
-    // sort: [sort, setSort],
-    // callback: [callback, setCallback],
-    // page: [page, setPage],
-    // result: [result, setResult],
+    selectedCategories,
+    setSelectedCategories,
   };
 }

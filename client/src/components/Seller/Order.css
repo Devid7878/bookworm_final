@@ -3,6 +3,7 @@
   grid-template-columns: repeat(5, 1fr);
   justify-content: flex-start;
   align-items: center;
+  background-color: white;
 }
 .order-container div {
   padding: 0.5rem 1rem;
@@ -19,4 +20,8 @@
 .order-container .flexrow p {
   font-size: 12px;
   font-weight: 400;
+}
+
+.order-main-container {
+  margin-bottom: 5rem;
 }/*# sourceMappingURL=Order.css.map */

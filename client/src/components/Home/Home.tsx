@@ -56,7 +56,7 @@ function Home() {
                     product.checked &&
                     product.category.toLowerCase() ===
                       category.name.toLowerCase() && (
-                      <div className="product">
+                      <div className="product" key={idx}>
                         <Link
                           to={`/product/${product._id}`}
                           className="categories-book"
