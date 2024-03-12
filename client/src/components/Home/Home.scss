@@ -7,7 +7,6 @@ $white: white;
 
 .home-container {
   display: flex;
-
   justify-content: center;
   align-items: center;
   max-width: 80%;
@@ -73,7 +72,7 @@ $white: white;
 
   .categories-book {
     display: flex;
-    align-items: stretch; /* Ensure cards have the same height */
+    align-items: stretch;
     justify-content: space-around;
     gap: 1rem;
     padding: 1.5rem;
@@ -88,14 +87,15 @@ $white: white;
     .img-container {
       height: 180px;
       background: transparent;
+      border-radius: 0.3rem;
+      overflow: hidden;
+      box-shadow: rgba(85, 85, 85, 0.473) 0px 20px 30px -20px;
     }
 
     img {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-        rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     }
 
     .categories-book-text {
@@ -129,7 +129,18 @@ $white: white;
     align-content: stretch;
     .categories-book {
       flex-direction: column;
+      align-items: center;
       height: 38vh;
+    }
+  }
+  @media (max-width: 750px) {
+    .product {
+      flex: 1 0 45%;
+    }
+  }
+  @media (max-width: 450px) {
+    .product {
+      flex: 1 0 100%;
     }
   }
 }

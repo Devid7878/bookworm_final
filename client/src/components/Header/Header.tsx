@@ -119,15 +119,15 @@ export default function Header() {
               </>
             )}
           </ul>
+          <p className="user-info-modal">
+            {infor && infor?.length > 0 && infor.at(0)}
+          </p>
           <div className="profile">
             <img
               src="https://a.storyblok.com/f/191576/1200x800/faa88c639f/round_profil_picture_before_.webp"
               alt=""
             />
           </div>
-          <p className="user-info-modal">
-            {infor && infor?.length > 0 && infor.at(0)}
-          </p>
         </div>
         <div className="hamburger" onClick={() => {}}>
           <MenuIcon />

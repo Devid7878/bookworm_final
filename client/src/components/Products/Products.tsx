@@ -53,6 +53,22 @@ export default function Products() {
     <div className="main">
       <HeaderWithSearchBar />
       <div className="container">
+        <div className="sort-by-container">
+          <div className="sort-books">
+            <select
+              value={sortBy}
+              onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                setSortBy(e.target.value);
+                setSort && setSort(e.target.value);
+              }}
+            >
+              <option value="none">Sort By</option>
+              <option value="price">Price: Low to High</option>
+              <option value="-price">Price: High to Low</option>
+              <option value="-publishedDate">Newest</option>
+            </select>
+          </div>
+        </div>
         <div className="products__top">
           <div className="left">
             <h3>Filter By</h3>
@@ -121,23 +137,6 @@ export default function Products() {
                 ''
               )}
             </div> */}
-          </div>
-          <div>
-            <h3>Sort By</h3>
-            <div className="sort-books">
-              <select
-                value={sortBy}
-                onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-                  setSortBy(e.target.value);
-                  setSort && setSort(e.target.value);
-                }}
-              >
-                <option value="none">Sort By</option>
-                <option value="price">Price: Low to High</option>
-                <option value="-price">Price: High to Low</option>
-                <option value="-publishedDate">Newest</option>
-              </select>
-            </div>
           </div>
         </div>
       </div>

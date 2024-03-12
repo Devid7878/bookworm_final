@@ -5,18 +5,41 @@ $black: black;
 $white: white;
 
 .container {
+  .sort-by-container {
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.137) 0px 7px 10px 0px;
+
+    .sort-books {
+      display: flex;
+      justify-content: end;
+      select {
+        border: 1px solid $dark1;
+        color: $light1;
+        padding: 0.5rem 1rem;
+        background: $dark1;
+        text-decoration: none;
+        border-radius: 0.5rem;
+      }
+    }
+  }
   .products__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 250px auto;
+    gap: 1rem;
 
     h3 {
       text-align: start;
     }
 
     .left {
-      max-width: 14vw;
       overflow: hidden;
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: rgba(100, 100, 111, 0.137) 0px 7px 10px 0px;
     }
 
     .filter-by-category {
@@ -97,36 +120,65 @@ $white: white;
       }
     }
 
-    .sort-books {
-      select {
-        border: 1px solid $dark1;
-        color: $light1;
-        padding: 0.5rem 1rem;
-        background: $dark1;
-        text-decoration: none;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-      }
-    }
-
     // .products__container{
     //     display: grid;
     //     grid-template-columns: repeat(1, 1fr);
     // }
 
     .products__container {
+      overflow-y: scroll;
+      height: 80vh;
+      width: 100%;
+      padding: 0rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-
       gap: 3rem;
+      border-radius: 1rem;
+      // background: rgb(219, 219, 219);
+
+      .products__main {
+        width: 100%;
+      }
+
+      /* width */
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #00000021;
+        border-radius: 50px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #ffffff;
+      }
     }
 
     .product__home--container {
+      width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
+      justify-content: space-between;
+
       gap: 1rem;
+
+      .product__container {
+        margin: 0;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
     }
     .button__seemore {
       button {

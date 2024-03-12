@@ -7,6 +7,7 @@ $white: white;
 .footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  align-items: start;
   max-height: 50vh;
   background-color: $light1;
   gap: 2rem;
@@ -48,7 +49,7 @@ $white: white;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 0.8rem 0;
+
     text-align: left;
   }
 
@@ -68,7 +69,7 @@ $white: white;
       display: flex;
       align-items: center;
       padding: 0.5rem 1rem;
-      width: 20vw;
+      width: 100%;
       border-radius: 0.5rem;
       box-shadow: rgba(226, 195, 255, 0.3) 0px 7px 10px 0px;
       input {

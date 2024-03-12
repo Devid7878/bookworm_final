@@ -1,59 +1,81 @@
 .tbody-user,
 .table-user {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	justify-content: center;
-	gap: 1rem;
-	width: 80%;
-	margin: 0 auto;
-	border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 1rem;
 
-	.name,
-	.email,
-	.role,
-	.delete {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 1rem;
-		img {
-			width: 5vw;
-		}
+  margin: 0 auto;
 
-		p {
-			font-size: 12px;
-			overflow: hidden;
-		}
-	}
+  .name,
+  .email,
+  .role,
+  .delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    img {
+      width: 5vw;
+    }
 
-	.email {
-		text-align: justify;
-		padding: 0.3rem;
-		justify-content: left;
-		min-width: 20vw;
-	}
+    p {
+      overflow: hidden;
+    }
+  }
 
-	.delete {
-		display: flex;
-		justify-content: space-around;
-		padding: 0.1rem;
-		align-items: center;
+  .email {
+    text-align: justify;
+    padding: 0.3rem;
+    justify-content: left;
+    min-width: 20vw;
+  }
 
-		button {
-			padding: 0.3rem 0.2rem;
-			font-size: 12px;
-			font-weight: 500;
-			border: none;
-			cursor: pointer;
-			min-width: 4vw;
-			background: tomato;
-			color: white;
-			border-radius: 5px;
-		}
+  .delete {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.1rem;
+    align-items: center;
 
-        button:hover{
-            transition: all 0.2s ease-in-out;
-            transform: scale(1.2);
-        }
-	}
+    button {
+      padding: 0.3rem 0.2rem;
+      font-size: 12px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      min-width: 4vw;
+      background: rgb(179, 0, 0);
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      transition: all 0.2s ease-in-out;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.all-user-container-main {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+
+  .table-user {
+    background: gray;
+    color: white;
+    padding: 0.5rem;
+  }
+
+  .tbody-user {
+    padding: 0.5rem 0rem;
+    background: rgb(250, 250, 250);
+    &:nth-child(even) {
+      background: rgb(255, 255, 255);
+    }
+  }
 }
