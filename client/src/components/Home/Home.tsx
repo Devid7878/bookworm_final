@@ -53,28 +53,27 @@ function Home() {
               <div className="categories">
                 {products.map((product, idx) => {
                   return (
-                    product.checked &&
-                    product.category.toLowerCase() ===
-                      category.name.toLowerCase() && (
-                      <div className="product" key={idx}>
-                        <Link
-                          to={`/product/${product._id}`}
-                          className="categories-book"
-                        >
-                          <div className="img-container">
-                            <img src={product.images.url} alt="category" />
-                          </div>
-                          <div className="categories-book-text">
-                            <h1>{product.title.substring(0, 20)}...</h1>
-                            {product.authors.map(
-                              (a, i) => i < 1 && <p key={i}>by {a}</p>
-                            )}
-                            <h5>${product.price}</h5>
-                          </div>
-                        </Link>
-                      </div>
-                    )
-                  );
+										product.checked &&
+										product.category.toLowerCase() ===
+											category.name.toLowerCase() && (
+											<div className='product' key={idx}>
+												<Link
+													to={`/product/${product._id}`}
+													className='categories-book'>
+													<div className='img-container'>
+														<img src={product.images.url} alt='category' />
+													</div>
+													<div className='categories-book-text'>
+														<h1>{product.title.substring(0, 20)}...</h1>
+														{product.authors.map(
+															(a, i) => i < 1 && <p key={i}>by {a}</p>,
+														)}
+														<h5>&#x20B9;{product.price}</h5>
+													</div>
+												</Link>
+											</div>
+										)
+									);
                 })}
               </div>
             </div>

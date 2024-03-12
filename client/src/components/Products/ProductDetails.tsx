@@ -60,7 +60,7 @@ export default function ProductDetail() {
 				<div className='detail__content--container'>
 					<div className='detail__content'>
 						<h1 className='product__detail--title'>{productDetail.title}</h1>
-						<h2>Price: ${productDetail.price}</h2>
+						<h2>Price: &#x20B9;{productDetail.price}</h2>
 						<div className='description'>
 							<span>Description</span>
 							<p>{productDetail.description}</p>

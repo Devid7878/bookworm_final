@@ -110,8 +110,8 @@ function CartItem() {
 					<div className='total'>Total</div>
 					<div className='total'>Remove Book</div>
 				</>
-				{cart?.map((item: ItemType) => (
-					<>
+				{cart?.map((item: ItemType, i) => (
+					<React.Fragment key={i}>
 						<div className='item-img'>
 							<img src={item.images.url} alt={item.title} />
 						</div>
@@ -131,7 +131,7 @@ function CartItem() {
 						</div>
 
 						<div className='price'>
-							<p>${item?.price}</p>
+							<p>&#x20B9;{item?.price}</p>
 						</div>
 
 						<div className='quantity'>
@@ -145,7 +145,7 @@ function CartItem() {
 						</div>
 
 						<div className='total'>
-							<p>${item?.quantity * item?.price}</p>
+							<p>&#x20B9;{item?.quantity * item?.price}</p>
 						</div>
 
 						<div className='remove-item'>
@@ -153,7 +153,7 @@ function CartItem() {
 								<CancelRounded />
 							</button>
 						</div>
-					</>
+					</React.Fragment>
 				))}
 			</div>
 		</div>

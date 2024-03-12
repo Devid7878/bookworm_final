@@ -181,189 +181,189 @@ export default function SellerProductsList() {
   };
 
   return (
-    <div className="seller-products-main-container">
-      <h2 className="page__header">Create Products</h2>
+		<div className='seller-products-main-container'>
+			<h2 className='page__header'>Create Products</h2>
 
-      <div className="creating-a-new-product">
-        <div className="upload__file--container">
-          <input
-            type="file"
-            name="file"
-            className="form-control-file"
-            id="file__upload"
-            onChange={handleUpload}
-          />
-          {loading ? (
-            <div id="file__images--container">
-              <Loading />
-            </div>
-          ) : (
-            <div className="file__image--container" style={styleImage}>
-              <img src={images ? images.url : ''} alt="" id="file__image" />
-              <i className="far fa-times-circle"></i>
-            </div>
-          )}
-        </div>
+			<div className='creating-a-new-product'>
+				<div className='upload__file--container'>
+					<input
+						type='file'
+						name='file'
+						className='form-control-file'
+						id='file__upload'
+						onChange={handleUpload}
+					/>
+					{loading ? (
+						<div id='file__images--container'>
+							<Loading />
+						</div>
+					) : (
+						<div className='file__image--container' style={styleImage}>
+							<img src={images ? images.url : ''} alt='' id='file__image' />
+							<i className='far fa-times-circle'></i>
+						</div>
+					)}
+				</div>
 
-        <div className="update__content">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="productID">ISBN of book</label>
-              <input
-                type="text"
-                name="product_id"
-                className="form-control create__product--input"
-                id="product_id"
-                placeholder="ISBN of a Book"
-                disabled={onEdit}
-                value={product.product_id}
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="title">Title</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                type="text"
-                name="title"
-                className="form-control create__product--input"
-                id="title"
-                placeholder="Title..."
-                value={product.title}
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="price">Price</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                type="text"
-                name="price"
-                className="form-control create__product--input"
-                id="price"
-                placeholder="Price..."
-                value={product.price}
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                type="text"
-                name="description"
-                className="form-control create__product--input"
-                id="description"
-                placeholder="Description..."
-                value={product.description}
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="pageCount">No of pages</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                type="text"
-                name="pageCount"
-                className="form-control create__product--input"
-                id="pageCount"
-                placeholder="Page Count..."
-                value={product.pageCount}
-                onChange={handleChangeInput}
-              />
-            </div>
+				<div className='update__content'>
+					<form onSubmit={handleSubmit}>
+						<div className='form-group'>
+							<label htmlFor='productID'>ISBN of book</label>
+							<input
+								type='text'
+								name='product_id'
+								className='form-control create__product--input'
+								id='product_id'
+								placeholder='ISBN of a Book'
+								disabled={onEdit}
+								value={product.product_id}
+								onChange={handleChangeInput}
+							/>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='title'>Title</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input
+								type='text'
+								name='title'
+								className='form-control create__product--input'
+								id='title'
+								placeholder='Title...'
+								value={product.title}
+								onChange={handleChangeInput}
+							/>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='price'>Price</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input
+								type='text'
+								name='price'
+								className='form-control create__product--input'
+								id='price'
+								placeholder='Price...'
+								value={product.price}
+								onChange={handleChangeInput}
+							/>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='description'>Description</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input
+								type='text'
+								name='description'
+								className='form-control create__product--input'
+								id='description'
+								placeholder='Description...'
+								value={product.description}
+								onChange={handleChangeInput}
+							/>
+						</div>
+						<div className='form-group'>
+							<label htmlFor='pageCount'>No of pages</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input
+								type='text'
+								name='pageCount'
+								className='form-control create__product--input'
+								id='pageCount'
+								placeholder='Page Count...'
+								value={product.pageCount}
+								onChange={handleChangeInput}
+							/>
+						</div>
 
-            <div className="form-group">
-              <label htmlFor="authors">Authors</label>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input
-                type="text"
-                name="authors"
-                className="form-control create__product--input"
-                id="authors"
-                placeholder="Author"
-                value={product.authors}
-                onChange={handleChangeInput}
-              />
-            </div>
+						<div className='form-group'>
+							<label htmlFor='authors'>Authors</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input
+								type='text'
+								name='authors'
+								className='form-control create__product--input'
+								id='authors'
+								placeholder='Author'
+								value={product.authors}
+								onChange={handleChangeInput}
+							/>
+						</div>
 
-            <div className="form-group">
-              <label htmlFor="category">Choose Category</label>
-              <select
-                name="category"
-                className="form-control create__product--input"
-                value={product.category}
-                onChange={handleChangeInput}
-              >
-                <option value="">Choose Category...</option>
-                {categories?.map((item) => {
-                  return (
-                    <option value={item.name} key={item._id}>
-                      {item.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <button className="create__product--btn" type="submit">
-              {onEdit ? 'Update Product' : 'Create Product'}
-            </button>
-          </form>
-        </div>
-      </div>
+						<div className='form-group'>
+							<label htmlFor='category'>Choose Category</label>
+							<select
+								name='category'
+								className='form-control create__product--input'
+								value={product.category}
+								onChange={handleChangeInput}>
+								<option value=''>Choose Category...</option>
+								{categories?.map((item) => {
+									return (
+										<option value={item.name} key={item._id}>
+											{item.name}
+										</option>
+									);
+								})}
+							</select>
+						</div>
+						<button className='create__product--btn' type='submit'>
+							{onEdit ? 'Update Product' : 'Create Product'}
+						</button>
+					</form>
+				</div>
+			</div>
 
-      <>
-        <div className="create-product-main-container">
-          <h2>Products List</h2>
-          <div className="create-product-table-header">
-            <div className="order__item">Name</div>
-            <div className="order__item">Image</div>
-            <div className="order__item">Price</div>
-            <div className="order__item">Sold</div>
-            <div className="order__item">Category</div>
-            <div className="order__item">Action</div>
-          </div>
+			<>
+				<div className='create-product-main-container'>
+					<h2>Products List</h2>
+					<div className='create-product-table-header'>
+						<div className='order__item'>Name</div>
+						<div className='order__item'>Image</div>
+						<div className='order__item'>Price</div>
+						<div className='order__item'>Sold</div>
+						<div className='order__item'>Category</div>
+						<div className='order__item'>Action</div>
+					</div>
 
-          {products?.map((item) => (
-            <div key={item._id} className="create-product-table-body">
-              <div>{item.title}</div>
-              <div>
-                <img
-                  src={item.images.url ? item.images.url : ''}
-                  alt={item.title}
-                  className="order__image"
-                />
-              </div>
-              <div>{item.price}$</div>
-              <div>{item.sold}</div>
-              <div>{item.category}</div>
-              <div>
-                <Link to={`/seller/${item._id}`}>
-                  <button className="admin__btn">Edit</button>
-                </Link>
-                &nbsp;
-                <button
-                  className="delete-btn-category"
-                  onClick={() => deleteProduct(item._id, item.images.public_id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </>
+					{products?.map((item) => (
+						<div key={item._id} className='create-product-table-body'>
+							<div>{item.title}</div>
+							<div>
+								<img
+									src={item.images.url ? item.images.url : ''}
+									alt={item.title}
+									className='order__image'
+								/>
+							</div>
+							<div>&#x20B9;{item.price}</div>
+							<div>{item.sold}</div>
+							<div>{item.category}</div>
+							<div>
+								<Link to={`/seller/${item._id}`}>
+									<button className='admin__btn'>Edit</button>
+								</Link>
+								&nbsp;
+								<button
+									className='delete-btn-category'
+									onClick={() =>
+										deleteProduct(item._id, item.images.public_id)
+									}>
+									Delete
+								</button>
+							</div>
+						</div>
+					))}
+				</div>
+			</>
 
-      <div className="stats-bottom-container">
-        <div className="stats-bottom">
-          <h4>Quantity Products</h4>
-          <p>{products?.length}</p>
-        </div>
-        <div className="stats-bottom">
-          <h4>Quantity Sold</h4>
-          <p>{products?.reduce((prev, item) => prev + item.sold, 0)}</p>
-        </div>
-      </div>
-    </div>
-  );
+			<div className='stats-bottom-container'>
+				<div className='stats-bottom'>
+					<h4>Quantity Products</h4>
+					<p>{products?.length}</p>
+				</div>
+				<div className='stats-bottom'>
+					<h4>Quantity Sold</h4>
+					<p>{products?.reduce((prev, item) => prev + item.sold, 0)}</p>
+				</div>
+			</div>
+		</div>
+	);
 }

@@ -66,7 +66,7 @@ function Orderr() {
 							)}
 						</div>
 						<div className='sale-amount'>
-							$
+							&#x20B9;
 							{item.cart.reduce(
 								(
 									prev,

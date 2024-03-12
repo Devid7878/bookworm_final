@@ -5,16 +5,19 @@
   margin: 2.5rem auto;
   gap: 2rem;
 }
+
 .cart-container .left .left-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid black;
 }
+
 .cart-container .left .left-top p {
   font-size: 20px;
   font-weight: bold;
 }
+
 .cart-container .left .left-top a {
   text-decoration: none;
   display: flex;
@@ -24,6 +27,7 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 .cart-container .right {
   background: rgb(209, 209, 209);
   display: flex;
@@ -32,16 +36,19 @@
   width: 40%;
   padding: 2rem;
 }
+
 .cart-container .right .right-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
+
 .cart-container .right .right-top p {
   font-size: 20px;
   font-weight: bold;
 }
+
 .cart-container .right .sub-total,
 .cart-container .right .delivery,
 .cart-container .right .total {
@@ -50,15 +57,18 @@
   align-items: center;
   gap: 0.5rem;
 }
+
 .cart-container .right .sub-total p,
 .cart-container .right .delivery p,
 .cart-container .right .total p {
   font-size: 18px;
   margin: 0.3rem;
 }
+
 .cart-container .right a {
   text-decoration: none;
 }
+
 .cart-container .right a .checkout-btn {
   margin-top: 10rem;
   max-width: 100%;
@@ -72,10 +82,14 @@
   color: white;
   cursor: pointer;
 }
+
 .cart-container .right a .checkout-btn:hover {
   transition: all 0.5s ease-in-out;
   transform: scale(1.1);
 }
+
 .cart-container .right a .checkout-btn span {
   margin-right: 1rem;
-}/*# sourceMappingURL=Cartt.css.map */
+}
+
+/*# sourceMappingURL=Cartt.css.map */

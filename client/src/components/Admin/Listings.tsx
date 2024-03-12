@@ -78,54 +78,54 @@ function Listings() {
   };
 
   return (
-    <>
-      <div className="container">
-        <Header />
-        <div className="table">
-          <div className="title">Title</div>
-          <div className="price">Price</div>
-          <div className="category">Category</div>
-          <div className="authors">Authors</div>
-          <div className="app-rej">Approve/Reject</div>
-        </div>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          nonCheckedProds?.map(
-            (product) =>
-              product && (
-                <div key={product?.title} className="tbody">
-                  <div className="title">
-                    <img src={product?.images.url} alt="" />
-                    <p>{product?.title}</p>
-                  </div>
-                  <div className="price">
-                    <p>${product?.price}</p>
-                  </div>
-                  <div className="category">
-                    <p>{product?.category}</p>
-                  </div>
-                  <div className="authors">
-                    <p>{product?.authors}</p>
-                  </div>
-                  <div className="app-rej">
-                    <button
-                      onClick={() => approveOrRejectHandler('approve', product)}
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={() => approveOrRejectHandler('reject', product)}
-                    >
-                      Reject
-                    </button>
-                  </div>
-                </div>
-              )
-          )
-        )}
-      </div>
-    </>
-  );
+		<>
+			<div className='container'>
+				<Header />
+				<div className='table'>
+					<div className='title'>Title</div>
+					<div className='price'>Price</div>
+					<div className='category'>Category</div>
+					<div className='authors'>Authors</div>
+					<div className='app-rej'>Approve/Reject</div>
+				</div>
+				{isLoading ? (
+					<Loading />
+				) : (
+					nonCheckedProds?.map(
+						(product) =>
+							product && (
+								<div key={product?.title} className='tbody'>
+									<div className='title'>
+										<img src={product?.images.url} alt='' />
+										<p>{product?.title}</p>
+									</div>
+									<div className='price'>
+										<p>&#x20B9;{product?.price}</p>
+									</div>
+									<div className='category'>
+										<p>{product?.category}</p>
+									</div>
+									<div className='authors'>
+										<p>{product?.authors}</p>
+									</div>
+									<div className='app-rej'>
+										<button
+											onClick={() =>
+												approveOrRejectHandler('approve', product)
+											}>
+											Approve
+										</button>
+										<button
+											onClick={() => approveOrRejectHandler('reject', product)}>
+											Reject
+										</button>
+									</div>
+								</div>
+							),
+					)
+				)}
+			</div>
+		</>
+	);
 }
 export default Listings;
