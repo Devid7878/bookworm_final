@@ -114,8 +114,14 @@ header nav .nav-links-container .profile img {
 header nav .nav-links-container .user-info-modal {
   font-weight: 900;
 }
+header nav .hamburger {
+  display: none;
+}
 @media (max-width: 1000px) {
   header nav .nav-links-container {
     display: none;
+  }
+  header nav .hamburger {
+    display: inline-block;
   }
 }/*# sourceMappingURL=Header.css.map */

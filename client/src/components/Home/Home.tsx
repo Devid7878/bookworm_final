@@ -65,7 +65,7 @@ function Home() {
                             <img src={product.images.url} alt="category" />
                           </div>
                           <div className="categories-book-text">
-                            <h1>{product.title}</h1>
+                            <h1>{product.title.substring(0, 20)}...</h1>
                             {product.authors.map(
                               (a, i) => i < 1 && <p key={i}>by {a}</p>
                             )}

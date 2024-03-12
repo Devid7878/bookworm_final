@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import MenuIcon from '@mui/icons-material/Menu';
+
 import Swal from 'sweetalert2';
 import './Header.css';
 import Logo from '../Logo/Logo';
@@ -20,6 +22,8 @@ export default function Header() {
   const setProducts = state?.productsAPI.setProducts;
   const setCategory = state?.productsAPI.setCategory;
   const infor = state?.userAPI.infor;
+
+  const [isMenuClicked, setIsMenuClicked] = useState(false);
 
   useEffect(() => {
     async function getProducts() {
@@ -124,6 +128,9 @@ export default function Header() {
           <p className="user-info-modal">
             {infor && infor?.length > 0 && infor.at(0)}
           </p>
+        </div>
+        <div className="hamburger" onClick={() => {}}>
+          <MenuIcon />
         </div>
       </nav>
     </header>

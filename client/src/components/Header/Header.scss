@@ -138,10 +138,16 @@ header {
         font-weight: 900;
       }
     }
+    .hamburger {
+      display: none;
+    }
 
     @media (max-width: 1000px) {
       .nav-links-container {
         display: none;
+      }
+      .hamburger {
+        display: inline-block;
       }
     }
   }

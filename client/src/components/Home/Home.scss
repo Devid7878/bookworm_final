@@ -54,11 +54,8 @@ $white: white;
   color: $dark2;
 }
 .categories {
-  // display: grid;
-  // grid-template-columns: repeat(4, 1fr);
   display: flex;
   flex-wrap: wrap;
-
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
@@ -76,8 +73,7 @@ $white: white;
 
   .categories-book {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch; /* Ensure cards have the same height */
     justify-content: space-around;
     gap: 1rem;
     padding: 1.5rem;
@@ -105,6 +101,7 @@ $white: white;
     .categories-book-text {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       max-width: 120px;
       overflow: hidden;
       gap: 7px;
@@ -124,6 +121,15 @@ $white: white;
         font-size: 12px;
         color: $dark1;
       }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    flex-wrap: wrap;
+    align-content: stretch;
+    .categories-book {
+      flex-direction: column;
+      height: 38vh;
     }
   }
 }

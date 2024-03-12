@@ -61,8 +61,7 @@
 }
 .categories .categories-book {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch; /* Ensure cards have the same height */
   justify-content: space-around;
   gap: 1rem;
   padding: 1.5rem;
@@ -88,6 +87,7 @@
 .categories .categories-book .categories-book-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   max-width: 120px;
   overflow: hidden;
   gap: 7px;
@@ -106,4 +106,14 @@
   font-weight: lighter;
   font-size: 12px;
   color: #23212a;
+}
+@media (max-width: 1300px) {
+  .categories {
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+  .categories .categories-book {
+    flex-direction: column;
+    height: 38vh;
+  }
 }/*# sourceMappingURL=Home.css.map */
