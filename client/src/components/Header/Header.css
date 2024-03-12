@@ -117,11 +117,41 @@ header nav .nav-links-container .user-info-modal {
 header nav .hamburger {
   display: none;
 }
+header nav .navbar-mobile {
+  background-color: white;
+  position: absolute;
+  right: 9vw;
+  top: 5rem;
+  display: none;
+}
+header nav .navbar-mobile .nav-links-mobile {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+header nav .navbar-mobile .nav-links-mobile li {
+  padding: 1rem 1rem;
+}
+header nav .navbar-mobile .nav-links-mobile li a {
+  text-decoration: none;
+  padding: 2rem;
+  color: #23212a;
+}
+header nav .navbar-mobile .nav-links-mobile li .logout-button button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @media (max-width: 1000px) {
   header nav .nav-links-container {
     display: none;
   }
   header nav .hamburger {
     display: inline-block;
+  }
+  header nav .navbar-mobile {
+    display: block;
   }
 }/*# sourceMappingURL=Header.css.map */

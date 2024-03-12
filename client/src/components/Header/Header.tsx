@@ -6,6 +6,7 @@ import axios from 'axios';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuIcon from '@mui/icons-material/Menu';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import Swal from 'sweetalert2';
 import './Header.css';
@@ -129,9 +130,87 @@ export default function Header() {
             />
           </div>
         </div>
-        <div className="hamburger" onClick={() => {}}>
-          <MenuIcon />
-        </div>
+        {!isMenuClicked ? (
+          <div
+            className="hamburger"
+            onClick={() => {
+              setIsMenuClicked((isMenuClicked) => !isMenuClicked);
+            }}
+          >
+            <MenuIcon />
+          </div>
+        ) : (
+          <div
+            className="hamburger"
+            onClick={() => {
+              setIsMenuClicked((isMenuClicked) => !isMenuClicked);
+            }}
+          >
+            <CloseRoundedIcon />
+          </div>
+        )}
+        {isMenuClicked && (
+          <div className="navbar-mobile">
+            <ul className="nav-links-mobile">
+              <li>
+                <Link to="/products">Products</Link>
+              </li>
+              {isLogged &&
+                (isSeller ? (
+                  <li>
+                    <Link to="/seller">Seller</Link>
+                  </li>
+                ) : isAdmin ? (
+                  <>
+                    <li>
+                      <Link to="/book-listings">Listings</Link>
+                    </li>
+                    <li>
+                      <Link to="/all-users">All Users</Link>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <Link to="/history">History</Link>
+                  </li>
+                ))}
+
+              {isLogged ? (
+                <>
+                  <li>
+                    <Link to="/cart" className="shopping-cart">
+                      {/* <ShoppingCartRoundedIcon />
+                      <span>{cart?.length}</span> */}
+                      Cart
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      onClick={logoutUser}
+                      className="logout-button button"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/login" className="login-button button">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/register" className="register-button button">
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+        )}
       </nav>
     </header>
   );

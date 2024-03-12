@@ -142,12 +142,47 @@ header {
       display: none;
     }
 
+    .navbar-mobile {
+      background-color: white;
+      position: absolute;
+      right: 9vw;
+      top: 5rem;
+      display: none;
+
+      .nav-links-mobile {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        li {
+          padding: 1rem 1rem;
+          a {
+            text-decoration: none;
+            padding: 2rem;
+            color: $dark1;
+          }
+
+          .logout-button button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+      }
+    }
+
     @media (max-width: 1000px) {
       .nav-links-container {
         display: none;
       }
       .hamburger {
         display: inline-block;
+      }
+
+      .navbar-mobile {
+        display: block;
       }
     }
   }

@@ -71,42 +71,43 @@ export default function Products() {
         </div>
         <div className="products__top">
           <div className="left">
-            <h3>Filter By</h3>
+            <h3>Filter By Categories</h3>
             <div className="filter-by">
               <div className="filter-by-category">
-                <div className="category-heading">
-                  <p>Categories</p>
+                {/* <div className="category-heading"> */}
+                {/* <p>Categories</p>
                   <span
                     onClick={() => {
                       setIsDownArr((isDownArr) => !isDownArr);
                     }}
-                  >
-                    {!isDownArr ? (
+                  > */}
+                {/* {!isDownArr ? (
                       <ArrowDropUpRounded
                         style={{ transform: 'rotate(90deg)' }}
                       />
                     ) : (
                       <ArrowDropDownRounded />
                     )}
-                  </span>
-                </div>
-                {isDownArr && (
-                  <div className="filter-by-category-modal">
-                    <div className="categories">
-                      {categories?.map((category, i) => (
-                        <div className="categories-checking" key={i}>
-                          <input
-                            type="checkbox"
-                            onClick={(event) => {
-                              handleCategoryFilter(event, category?.name);
-                            }}
-                          />
-                          <p>{category.name}</p>
-                        </div>
-                      ))}
-                    </div>
+                  </span> */}
+                {/* </div> */}
+                {/* {isDownArr && (
+                  
+                )} */}
+                <div className="filter-by-category-modal">
+                  <div className="categories">
+                    {categories?.map((category, i) => (
+                      <div className="categories-checking" key={i}>
+                        <input
+                          type="checkbox"
+                          onClick={(event) => {
+                            handleCategoryFilter(event, category?.name);
+                          }}
+                        />
+                        <p>{category.name}</p>
+                      </div>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
